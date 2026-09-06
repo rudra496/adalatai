@@ -10,8 +10,8 @@
 <body>
 <div id="shell">
 <main>
-  <h1 data-i18n="judge_title">বিচারক কনসোল — পর্যালোচনা ও অনুমোদন</h1>
-  <p class="small" data-i18n="judge_note">প্রতিটি এআই-সাজেশন পর্যালোচনা করুন। সম্পাদনা করুন বা বাতিল করুন। চূড়ান্ত আদেশ আপনার স্বাক্ষরেই।</p>
+  <h1 id="jTitle">বিচারক কনসোল — পর্যালোচনা ও অনুমোদন</h1>
+  <p class="small" id="jNote">প্রতিটি এআই-সাজেশন পর্যালোচনা করুন। সম্পাদনা করুন বা বাতিল করুন। চূড়ান্ত আদেশ আপনার স্বাক্ষরেই।</p>
   <div id="queue"></div>
 </main>
 </div>
@@ -24,6 +24,9 @@ import { assembleDraft } from "./assets/js/court.js";
 
 initShell("judge");
 const lang = settings.lang || "bn";
+el("jTitle").textContent = t("judge_title", lang);
+el("jNote").textContent = t("judge_note", lang);
+el("lawTitleFix")?.remove();
 
 async function render() {
   const cases = (await all("cases")).filter((c) => c.status === "PENDING_JUDGE").sort((a, b) => b.createdAt.localeCompare(a.createdAt));
@@ -33,14 +36,14 @@ async function render() {
     <div class="card">
       <b>${c.caseNo}</b> <span class="small">${new Date(c.createdAt).toLocaleString()}</span>
       <p class="small">${c.facts}</p>
-      <b>${t("ai_types", lang)}:</b> ${c.analysis.types.map(([ty]) => ty).join(", ")}<br>
-      <b>${t("ai_sections", lang)}:</b> ${c.analysis.sections.map((s) => "ধারা " + s.number).join(", ")}
+      <b>${t("ai_types", lang)}:</b> ${c.analysis.types.map(([ty]) => t("labels", lang)[ty] || ty).join(", ")}<br>
+      <b>${t("ai_sections", lang)}:</b> ${c.analysis.sections.map((s) => (lang === "bn" ? "ধারা" : "§") + " " + s.number).join(", ")}
       <details><summary class="small">${lang === "bn" ? "সম্পূর্ণ এআই-বিশ্লেষণ দেখুন" : "Full AI analysis"}</summary>
-        ${c.analysis.sections.map((s) => `<div class="note"><b>ধারা ${s.number}</b> <i>"${s.text}"</i></div>`).join("")}
+        ${c.analysis.sections.map((s) => `<div class="note"><b>${lang === "bn" ? "ধারা" : "Section"} ${s.number}</b> <i>"${s.text}"</i></div>`).join("")}
       </details>
       <br>
       <textarea id="edit-${c.id}" rows="4" style="width:100%">${c.judgeNote || ""}</textarea>
-      <small>${lang === "bn" ? "বিচারকের মন্তব্য / সংশোধন:" : "Judge's note / corrections:"}</small><br><br>
+      <small>${t("judge_edit", lang)}</small><br><br>
       <button data-approve="${c.id}">${t("approve", lang)}</button>
       <button class="danger" data-override="${c.id}">${t("override", lang)}</button>
       <button class="secondary" data-draft="${c.id}">${t("draft", lang)}</button>

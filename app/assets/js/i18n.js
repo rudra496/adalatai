@@ -25,6 +25,27 @@ export const STRINGS = {
     search_law: "ধারা/শিরোনাম/টেক্সট খুঁজুন", source_note: "উৎস: bdlaws.minlaw.gov.bd (মন্ত্রণালয়ের অফিসিয়াল ডাটাবেস) — হুবহু টেক্সট, কোনো প্যারাফ্রেজ নয়",
     analytics_title: "পেন্ডেন্সি অ্যানালিটিক্স — যাচাইকৃত সংখ্যা",
     audit_title: "অডিট ট্রেইল — প্রতিটি এআই-কাজ ও বিচারকের সিদ্ধান্ত",
+    audit_empty: "খালি — intake পেজ থেকে একটি মামলা বিশ্লেষণ করলেই এন্ট্রি আসবে।",
+    audit_export: "অডিট ট্রেইল এক্সপোর্ট (JSON)",
+    facts_label: "ঘটনার বিবরণ (বাংলা/English — কথা বলেও দেওয়া যাবে)",
+    analyze: "এআই বিশ্লেষণ চালান", analyzing: "বিশ্লেষণ চলছে...",
+    example: "উদাহরণ", examples_label: "উদাহরণ মামলা (বাংলা ও ইংরেজি):",
+    voice_start: "🎤 বলুন", voice_stop: "⏹ থামুন", voice_unsupported: "এই ব্রাউজারে ভয়েস নেই",
+    empty_facts: "আগে ঘটনার বিবরণ লিখুন", sent: "পাঠানো হয়েছে ✓ (মামলা নং",
+    judge_edit: "বিচারকের মন্তব্য / সংশোধন:", full_analysis: "সম্পূর্ণ এআই-বিশ্লেষণ দেখুন",
+    print: "🖨 প্রিন্ট", no_drafts: "কোনো খসড়া নেই — আগে মামলা বিশ্লেষণ করে বিচারক কনসোল থেকে খসড়া তৈরি করুন।",
+    bn_explain: "সহজ বাংলা ব্যাখ্যা (অ-সরকারি — ব্যাখ্যা মাত্র; উদ্ধৃতিই প্রামাণ্য)",
+    quote: "আইনের হুবহু টেক্সট (সরকারি ইংরেজি পাঠ)",
+    yearwise: "বছরভিত্তিক পেন্ডেন্সি (সূত্রসহ)", model_quality: "AdalatAI মডেল মান (improve-loop trace)",
+    provenance: "প্রমাণপত্র (প্রতিটি সংখ্যার উৎস)",
+    kpi_cases: "পেন্ডিং কেস (ডিসে ২০২৪)", kpi_sub: "সাব-অর্ডিনেট আদালত (ডিসে ২০২৫)",
+    kpi_sections: "দণ্ডবিধির ধারা (অফিসিয়াল bdlaws নম্বরিং) — হুবহু (547 sections)",
+    kpi_papers: "যাচাইকৃত গবেষণাপত্র (100 papers)",
+    labels: { theft: "চুরি", robbery: "ডাকাতি/ছিনতাই", dacoity: "দলবদ্ধ ডাকাতি", murder: "খুন",
+      culpable_homicide: "অনিচ্ছাকৃত হত্যা", hurt: "আঘাত", assault: "মারপিট/আক্রমণ",
+      kidnapping: "অপহরণ", wrongful_confinement: "অবৈধ আটক", cheating: "প্রতারণা",
+      breach_of_trust: "আস্থাভাজন", mischief: "সম্পত্তি ক্ষতি", trespass: "অনধিকার প্রবেশ",
+      defamation: "মানহানি", criminal_intimidation: "ভয় প্রদর্শন", rape: "ধর্ষণ" },
     disclaimer: "এটি তথ্য ও খসড়া-সহায়তা মাত্র — আইনি পরামর্শ বা রায় নয়। চূড়ান্ত সিদ্ধান্ত মানব বিচারকের।",
   },
   en: {
@@ -52,6 +73,27 @@ export const STRINGS = {
     search_law: "Search section/title/text", source_note: "Source: bdlaws.minlaw.gov.bd (official Ministry database) — verbatim text, no paraphrase",
     analytics_title: "Pendency analytics — verified numbers",
     audit_title: "Audit Trail — every AI action and judge decision",
+    audit_empty: "Empty — analyze a case from the intake page to create entries.",
+    audit_export: "Export audit trail (JSON)",
+    facts_label: "Case facts (Bangla/English — voice supported)",
+    analyze: "Run AI analysis", analyzing: "Analysing...",
+    example: "Example", examples_label: "Example cases (Bangla & English):",
+    voice_start: "🎤 Speak", voice_stop: "⏹ Stop", voice_unsupported: "Voice not supported in this browser",
+    empty_facts: "Enter the case facts first", sent: "Sent ✓ (case no.",
+    judge_edit: "Judge's note / corrections:", full_analysis: "Full AI analysis",
+    print: "🖨 Print", no_drafts: "No drafts yet — analyze a case and assemble from the Judge Console.",
+    bn_explain: "Plain-Bangla explanation (NON-official — explanation only; the quoted text is authoritative)",
+    quote: "Verbatim statute text (official English text)",
+    yearwise: "Year-wise pendency (sourced)", model_quality: "AdalatAI model quality (improve-loop trace)",
+    provenance: "Provenance (source of every number)",
+    kpi_cases: "pending cases (Dec 2024)", kpi_sub: "subordinate courts (Dec 2025)",
+    kpi_sections: "Penal Code sections (official bdlaws numbering) — verbatim (547 sections)",
+    kpi_papers: "verified papers (100 papers)",
+    labels: { theft: "theft", robbery: "robbery", dacoity: "dacoity", murder: "murder",
+      culpable_homicide: "culpable homicide", hurt: "hurt", assault: "assault",
+      kidnapping: "kidnapping", wrongful_confinement: "wrongful confinement", cheating: "cheating",
+      breach_of_trust: "breach of trust", mischief: "mischief", trespass: "trespass",
+      defamation: "defamation", criminal_intimidation: "criminal intimidation", rape: "rape" },
     disclaimer: "This is information and drafting assistance — not legal advice and not a judicial order. The human judge decides.",
   },
 };
@@ -59,6 +101,9 @@ export const STRINGS = {
 export function t(key, lang = "bn") {
   const table = STRINGS[lang] || STRINGS.bn;
   return table[key] ?? STRINGS.bn[key] ?? key;
+}
+export function typeName(type, lang = "bn") {
+  return (STRINGS[lang] || STRINGS.bn).labels[type] || type;
 }
 export function getLang() {
   try { return localStorage.getItem("adalat_lang") || "bn"; } catch { return "bn"; }

@@ -10,7 +10,7 @@
 <body>
 <div id="shell">
 <main>
-  <h1 data-i18n="law_title">আইন ব্রাউজার — দণ্ডবিধি ১৮৬০</h1>
+  <h1 id="lawH1">আইন ব্রাউজার — দণ্ডবিধি ১৮৬০</h1>
   <p class="small" data-i18n="source_note">উৎস: bdlaws.minlaw.gov.bd (মন্ত্রণালয়ের অফিসিয়াল ডাটাবেস) — হুবহু টেক্সট, কোনো প্যারাফ্রেজ নয়</p>
   <input type="text" id="q" data-i18n-ph="" placeholder="ধারা/শিরোনাম/টেক্সট খুঁজুন — e.g. 379 / theft / robbery">
   <div id="results" style="margin-top:0.8rem"></div>
@@ -19,8 +19,12 @@
 <script type="module">
 import { initShell, el } from "./assets/js/app.js";
 import { loadStatutes } from "./assets/js/court.js";
+import { settings } from "./assets/js/store.js";
+import { t } from "./assets/js/i18n.js";
 
 initShell("law");
+el("lawH1").textContent = t("law_title", settings.lang || "bn");
+el("q").placeholder = t("search_law", settings.lang || "bn");
 const pc = await loadStatutes();
 const byId = {};
 for (const s of pc.sections) byId[s.number] = s;
@@ -32,10 +36,15 @@ function search(q) {
   return pc.sections.filter((s) =>
     s.number.includes(q) || s.title.toLowerCase().includes(q) || s.text.toLowerCase().includes(q)).slice(0, 12);
 }
+let GLOSSARY = {};
+fetch("data/bn_explanations.json").then((r) => r.json()).then((g) => { GLOSSARY = g.explanations; }).catch(() => {});
+
 function render(list) {
+  const lang = settings.lang || "bn";
   el("results").innerHTML = list.map((s) => `
-    <div class="card"><b>ধারা ${s.number} — ${s.title}</b>
+    <div class="card"><b>${lang === "bn" ? "ধারা" : "Section"} ${s.number} — ${s.title}</b>
       <p class="small"><i>"${s.text}"</i></p>
+      ${lang === "bn" && GLOSSARY[s.number] ? `<div class="note small"><b>${t("bn_explain", lang)}:</b> ${GLOSSARY[s.number]}</div>` : ""}
       <a class="small" href="${s.url}" target="_blank" rel="noopener">${s.url}</a>
     </div>`).join("") || `<p class="small">—</p>`;
 }

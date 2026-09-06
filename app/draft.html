@@ -22,6 +22,8 @@ import { settings } from "./assets/js/store.js";
 
 initShell("draft");
 const lang = settings.lang || "bn";
+const _pb = () => { const b = document.getElementById("printB"); if (b) b.textContent = t("print", lang); };
+setTimeout(_pb, 100);
 const cases = (await all("cases")).filter((c) => c.draft).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 const box = el("draftBox");
 if (!cases.length) {
@@ -34,7 +36,7 @@ if (!cases.length) {
       d.header, d.facts, d.issues, d.law, d.conclusion, d.signature
     ].join("\\n\\n")}</pre>
     <div class="note small">${d.auditNote}</div>
-    <button onclick="window.print()">🖨 Print</button></div>`;
+    <button onclick="window.print()" id="printB">🖨 Print</button></div>`;
 }
 </script>
 </body>

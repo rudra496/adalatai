@@ -10,24 +10,24 @@
 <body>
 <div id="shell">
 <main>
-  <h1 data-i18n="analytics_title">পেন্ডেন্সি অ্যানালিটিক্স — যাচাইকৃত সংখ্যা</h1>
+  <h1 id="anTitle">পেন্ডেন্সি অ্যানালিটিক্স — যাচাইকৃত সংখ্যা</h1>
 
   <div class="grid4" id="kpis"></div>
 
   <div class="card">
-    <b>বছরভিত্তিক পেন্ডেন্সি (সূত্রসহ) / Year-wise pendency (sourced)</b>
+    <b id="ywHead">বছরভিত্তিক পেন্ডেন্সি (সূত্রসহ) / Year-wise pendency (sourced)</b>
     <div class="chart" id="chartPendency"></div>
     <p class="small">2000: 475,753 · 2010: 975,760 (historical series) · 2024: 4,742,731 (Supreme Court via BSS) · 2025: 4,041,924 subordinate courts (Law Minister, Parliament) — all figures as published; see provenance below.</p>
   </div>
 
   <div class="card">
-    <b>AdalatAI model quality (from training loop trace)</b>
+    <b id="mqHead">AdalatAI model quality</b>
     <div id="loopTrace"></div>
     <p class="small">The improve-loop (train → evaluate → critic → remediate → retrain) runs until all gates pass: G1 micro-F1 ≥ 0.85 · G2 per-class F1 ≥ 0.75 · G3 retrieval recall@5 ≥ 0.90 · G4 statute-verbatim spot-checks.</p>
   </div>
 
   <div class="card">
-    <b>Provenance</b>
+    <b id="provenanceH">Provenance</b>
     <ul class="small">
       <li>4,742,731 pending cases (Dec 31, 2024) — Supreme Court of Bangladesh, via BSS</li>
       <li>4,041,924 subordinate-court cases (Dec 31, 2025) — Law Minister in Parliament, via Prothom Alo</li>
@@ -46,6 +46,7 @@ import { t } from "./assets/js/i18n.js";
 
 initShell("analytics");
 const lang = settings.lang || "bn";
+el("anTitle").textContent = t("analytics_title", lang);
 const bnNum = (x) => lang === "bn" ? String(x).replace(/\d/g, (d) => "০১২৩৪৫৬৭৮৯"[d]) : String(x);
 const fmt = (n) => bnNum(Number(n).toLocaleString("en-US"));
 
@@ -60,7 +61,10 @@ for (const [i, [yr, v]] of SERIES.entries()) {
   svg += `<text x="${pad + i * bw + bw / 2}" y="${H - 34 - h}" text-anchor="middle" class="axis">${bnNum((v / 1e6).toFixed(2))}M</text>`;
 }
 svg += "</svg>";
-el("chartPendency").innerHTML = svg;
+el('ywHead').textContent = t('yearwise', lang);
+el('mqHead').textContent = t('model_quality', lang);
+el('provenanceH').textContent = t('provenance', lang);
+el('chartPendency').innerHTML = svg;
 
 el("kpis").innerHTML = `
   <div class="card kpi"><div class="num">${fmt(4742731)}</div><div class="lbl">${lang === "bn" ? "পেন্ডিং কেস (ডিসে ২০২৪ · 4,742,731)" : "pending cases (Dec 2024) — SC via BSS"}</div></div>

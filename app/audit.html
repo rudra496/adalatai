@@ -12,6 +12,7 @@
 <main>
   <h1 data-i18n="audit_title">অডিট ট্রেইল — প্রতিটি এআই-কাজ ও বিচারকের সিদ্ধান্ত</h1>
   <p class="small">${"প্রতিটি এন্ট্রি: ঘটনা, মডেল সংস্করণ, সময় — পরিবর্তনযোগ্য নয় (append-only)"}</p>
+  <button id="exportBtn" class="secondary"></button>
   <div id="trail"></div>
 </main>
 </div>
@@ -20,11 +21,19 @@ import { initShell, el } from "./assets/js/app.js";
 import { all } from "./assets/js/store.js";
 
 initShell("audit");
+const lang = settings.lang || "bn";
+el("exportBtn").textContent = t("audit_export", lang);
 const items = (await all("audit")).sort((a, b) => b.at.localeCompare(a.at));
+el("exportBtn").onclick = () => {
+  const blob = new Blob([JSON.stringify(items, null, 1)], { type: "application/json" });
+  const a2 = document.createElement("a");
+  a2.href = URL.createObjectURL(blob);
+  a2.download = "adalatai-audit-trail.json"; a2.click();
+};
 el("trail").innerHTML = items.length ? items.map((a) => `
   <div class="card"><b>${a.event}</b> <span class="small">${a.at} · model: ${a.model_version}</span>
     <p class="small" style="white-space:pre-wrap">${a.detail}</p></div>`).join("")
-  : `<p class="small">${"খালি — intake পেজ থেকে একটি মামলা বিশ্লেষণ করলেই এন্ট্রি আসবে।"}</p>`;
+  : `<p class="small">${t("audit_empty", lang)}</p>`;
 </script>
 </body>
 </html>
