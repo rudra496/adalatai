@@ -29,6 +29,7 @@ import { initShell, el, audit } from "./assets/js/app.js";
 import { analyzeCase } from "./assets/js/court.js";
 import { add } from "./assets/js/store.js";
 import { settings } from "./assets/js/store.js";
+import { t } from "./assets/js/i18n.js";
 
 initShell("intake");
 const lang = settings.lang || "bn";
@@ -53,9 +54,10 @@ el("analyzeBtn").onclick = async () => {
     if (p.fine) parts.push(lang === "bn" ? "জরিমানা" : "fine");
     return parts.join(" · ") || (p.notes[0] || "—");
   };
+  const model = await (await fetch("data/case_model.json")).json();
   el("analysis").innerHTML = `
-    <div class="card"><b data-x>${t("ai_types", lang)}</b>
-      <div class="chips">${a.types.map(([ty, sc]) => `<span class="chip">${(lang === "bn" ? (loadTypes()[ty]?.bn || ty) : ty)} · ${sc}</span>`).join("") || "—"}</div></div>
+    <div class="card"><b>${t("ai_types", lang)}</b>
+      <div class="chips">${a.types.map(([ty, sc]) => `<span class="chip">${((model.types[ty]?.bn || ty) + (lang === "en" ? " (" + ty + ")" : ""))} · ${sc}</span>`).join("") || "—"}</div></div>
     <div class="card"><b>${t("ai_sections", lang)}</b>
       ${a.sections.map((s) => `<div class="note"><b>ধারা ${s.number} — ${s.title}</b><br>
         <span class="small">${t("quote", lang)}:</span> <i>"${s.text}"</i><br>
@@ -65,12 +67,6 @@ el("analyzeBtn").onclick = async () => {
     <div class="card"><b>${t("ai_evidence", lang)}</b>
       <ul style="margin:0.3rem 0 0 1.1rem">${a.evidence.map((e) => `<li class="small">${e}</li>`).join("")}</ul>
       <br><button id="sendJudge">${t("save_case", lang)}</button></div>`;
-  function loadTypes() { return a && {}; }
-  // typed labels from model
-  const model = await (await fetch("data/case_model.json")).json();
-  el("analysis").querySelector("[data-x]").textContent = t("ai_types", lang);
-  el("analysis").querySelector(".chips").innerHTML = a.types.map(([ty, sc]) =>
-    `<span class="chip">${(model.types[ty]?.bn || ty) + (lang === "en" ? " (" + ty + ")" : "")} · ${sc}</span>`).join("") || "—";
   el("sendJudge").onclick = async () => {
     const caseNo = "CC-" + new Date().toISOString().slice(0, 10).replace(/-/g, "") + "-" + Math.floor(Math.random() * 900 + 100);
     const record = { caseNo, facts, analysis: a, status: "PENDING_JUDGE", createdAt: new Date().toISOString() };
