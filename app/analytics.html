@@ -63,10 +63,10 @@ svg += "</svg>";
 el("chartPendency").innerHTML = svg;
 
 el("kpis").innerHTML = `
-  <div class="card kpi"><div class="num">${fmt(4742731)}</div><div class="lbl">${lang === "bn" ? "পেন্ডিং কেস (ডিসে ২০২৪)" : "pending cases (Dec 2024) — SC via BSS"}</div></div>
-  <div class="card kpi"><div class="num">${fmt(4041924)}</div><div class="lbl">${lang === "bn" ? "সাব-অর্ডিনেট আদালত (ডিসে ২০২৫)" : "subordinate courts (Dec 2025) — Law Minister"}</div></div>
-  <div class="card kpi"><div class="num">${fmt(547)}</div><div class="lbl">${lang === "bn" ? "দণ্ডবিধির ধারা (অফিসিয়াল bdlaws নম্বরিং) — হুবহু" : "Penal Code sections (official bdlaws numbering) — verbatim"}</div></div>
-  <div class="card kpi"><div class="num">${fmt(100)}</div><div class="lbl">${lang === "bn" ? "যাচাইকৃত গবেষণাপত্র" : "verified papers (Crossref)"}</div></div>`;
+  <div class="card kpi"><div class="num">${fmt(4742731)}</div><div class="lbl">${lang === "bn" ? "পেন্ডিং কেস (ডিসে ২০২৪ · 4,742,731)" : "pending cases (Dec 2024) — SC via BSS"}</div></div>
+  <div class="card kpi"><div class="num">${fmt(4041924)}</div><div class="lbl">${lang === "bn" ? "সাব-অর্ডিনেট আদালত (ডিসে ২০২৫ · 4,041,924)" : "subordinate courts (Dec 2025) — Law Minister"}</div></div>
+  <div class="card kpi"><div class="num">${fmt(547)}</div><div class="lbl">${lang === "bn" ? "দণ্ডবিধির ধারা (অফিসিয়াল bdlaws নম্বরিং) — হুবহু (547 sections)" : "Penal Code sections (official bdlaws numbering) — verbatim"}</div></div>
+  <div class="card kpi"><div class="num">${fmt(100)}</div><div class="lbl">${lang === "bn" ? "যাচাইকৃত গবেষণাপত্র (100 papers)" : "verified papers (Crossref)"}</div></div>`;
 
 const lt = await (await fetch("data/case_model.json")).json();
 el("loopTrace").innerHTML = (lt.loop_trace || []).map((r) =>
