@@ -70,7 +70,7 @@ el("kpis").innerHTML = `
 
 const lt = await (await fetch("data/case_model.json")).json();
 el("loopTrace").innerHTML = (lt.loop_trace || []).map((r) =>
-  `<div class="note small">Iteration ${r.iteration}: corpus ${r.corpus} · threshold ${r.threshold} · micro ${r.micro.join("/")} · worst ${r.worst3.map((w) => w[0] + ":" + w[1]).join(", ")} · G1 ${r.G1_pass ? "✓" : "✗"} G2 ${r.G2_pass ? "✓" : "✗"}</div>`).join("")
+  `<div class="note small">Iteration ${r.iteration}: corpus ${r.corpus} · thresholds ${Object.keys(r.thresholds || {}).length}/16 · micro ${r.micro.join("/")} · worst ${r.worst3.map((w) => w[0] + ":" + w[1]).join(", ")} · G1 ${r.G1_pass ? "✓" : "✗"} G2 ${r.G2_pass ? "✓" : "✗"}</div>`).join("")
   + `<p class="small">FINAL: micro-F1 <b>${lt.metrics.micro_f1}</b> · retrieval recall@5 <b>${lt.metrics.retrieval_recall_at_5}</b> · gates: G1 ✓ G2 ✓ G3 ✓ G4 ✓</p>`;
 </script>
 </body>
