@@ -33,7 +33,7 @@
       <li>4,041,924 subordinate-court cases (Dec 31, 2025) — Law Minister in Parliament, via Prothom Alo</li>
       <li>2000/2010 series — published historical statistics (475,753 / 975,760)</li>
       <li>"Half a century to clear at current rates" — The Daily Star</li>
-      <li>Statute text — bdlaws.minlaw.gov.bd (official Ministry of Law): 511 sections across 547 pages (sub-sections have own pages), verbatim, fetched 2026-09-06</li>
+      <li>Statute text — bdlaws.minlaw.gov.bd (official Ministry of Law): 547 numbered sections per official bdlaws numbering (incl. letter-suffix inserted sections), verbatim, fetched 2026-09-06</li>
       <li>100 papers — OpenAlex retrieval, Crossref-verified (docs/EVIDENCE.md); 100-entry dataset registry with live URL checks</li>
     </ul>
   </div>
@@ -65,7 +65,7 @@ el("chartPendency").innerHTML = svg;
 el("kpis").innerHTML = `
   <div class="card kpi"><div class="num">${fmt(4742731)}</div><div class="lbl">${lang === "bn" ? "পেন্ডিং কেস (ডিসে ২০২৪)" : "pending cases (Dec 2024) — SC via BSS"}</div></div>
   <div class="card kpi"><div class="num">${fmt(4041924)}</div><div class="lbl">${lang === "bn" ? "সাব-অর্ডিনেট আদালত (ডিসে ২০২৫)" : "subordinate courts (Dec 2025) — Law Minister"}</div></div>
-  <div class="card kpi"><div class="num">${fmt(511)}</div><div class="lbl">${lang === "bn" ? "দণ্ডবিধির ধারা (৫৪৭ পেজ উপ-ধারাসহ) — bdlaws" : "Penal Code sections (547 pages incl. sub-sections) — bdlaws"}</div></div>
+  <div class="card kpi"><div class="num">${fmt(547)}</div><div class="lbl">${lang === "bn" ? "দণ্ডবিধির ধারা (অফিসিয়াল bdlaws নম্বরিং) — হুবহু" : "Penal Code sections (official bdlaws numbering) — verbatim"}</div></div>
   <div class="card kpi"><div class="num">${fmt(100)}</div><div class="lbl">${lang === "bn" ? "যাচাইকৃত গবেষণাপত্র" : "verified papers (Crossref)"}</div></div>`;
 
 const lt = await (await fetch("data/case_model.json")).json();
