@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>মামলা গ্রহণ — AdalatAI</title>
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="icon" href="assets/icons/icon-192.png">
+</head>
+<body>
+<div id="shell">
+<main>
+  <h1 data-i18n="intake_title">মামলা গ্রহণ ও এআই প্রি-বিশ্লেষণ</h1>
+
+  <div class="card">
+    <label data-i18n="facts_label">ঘটনার বিবরণ (বাংলা/English)</label>
+    <textarea id="facts" rows="4"></textarea>
+    <button class="secondary" id="bnEx" data-i18n="example_bn">উদাহরণ (বাংলা)</button>
+    <button class="secondary" id="enEx" data-i18n="example_en">Example (English)</button>
+    <br><br>
+    <button id="analyzeBtn" data-i18n="analyze">এআই বিশ্লেষণ চালান</button>
+    <div id="analysis" style="margin-top:0.8rem"></div>
+  </div>
+  <p class="small" data-i18n="disclaimer"></p>
+</main>
+</div>
+<script type="module">
+import { initShell, el, audit } from "./assets/js/app.js";
+import { analyzeCase } from "./assets/js/court.js";
+import { add } from "./assets/js/store.js";
+import { settings } from "./assets/js/store.js";
+
+initShell("intake");
+const lang = settings.lang || "bn";
+const EXAMPLES = {
+  bn: "রাতের বেলা রফিকের দোকান ভেঙে টিভি ও কম্পিউটার চুরি হয়েছে। পরে করিমকে ছুরি মেরে আহত করেছে এবং জোর করে তার চেইন ছিনতাই করেছে। ফিরতি এফআইআর নম্বর দেওয়া হয়েছে।",
+  en: "Someone broke into Rahim's shop at night and committed theft of the TV and computer. Later they stabbed Karim causing hurt, and committed robbery by snatching his gold chain. FIR has been filed.",
+};
+el("bnEx").onclick = () => { el("facts").value = EXAMPLES.bn; };
+el("enEx").onclick = () => { el("facts").value = EXAMPLES.en; };
+
+el("analyzeBtn").onclick = async () => {
+  const facts = el("facts").value.trim();
+  if (!facts) return;
+  el("analyzeBtn").disabled = true;
+  const a = await analyzeCase(facts);
+  const penaltyRow = (s) => {
+    const p = s.punishment;
+    const parts = [];
+    if (p.death) parts.push(lang === "bn" ? "মৃত্যুদণ্ড" : "death");
+    if (p.life) parts.push(lang === "bn" ? "যাবজ্জীবন" : "imprisonment for life");
+    if (p.maxYears) parts.push((lang === "bn" ? "সর্বোচ্চ " : "up to ") + p.maxYears + (lang === "bn" ? " বছর" : " yr"));
+    if (p.fine) parts.push(lang === "bn" ? "জরিমানা" : "fine");
+    return parts.join(" · ") || (p.notes[0] || "—");
+  };
+  el("analysis").innerHTML = `
+    <div class="card"><b data-x>${t("ai_types", lang)}</b>
+      <div class="chips">${a.types.map(([ty, sc]) => `<span class="chip">${(lang === "bn" ? (loadTypes()[ty]?.bn || ty) : ty)} · ${sc}</span>`).join("") || "—"}</div></div>
+    <div class="card"><b>${t("ai_sections", lang)}</b>
+      ${a.sections.map((s) => `<div class="note"><b>ধারা ${s.number} — ${s.title}</b><br>
+        <span class="small">${t("quote", lang)}:</span> <i>"${s.text}"</i><br>
+        <span class="small">${t("penalty", lang)}: <b>${penaltyRow(s)}</b></span><br>
+        <a class="small" href="${s.url}" target="_blank" rel="noopener">${s.url}</a></div>`).join("")}
+    </div>
+    <div class="card"><b>${t("ai_evidence", lang)}</b>
+      <ul style="margin:0.3rem 0 0 1.1rem">${a.evidence.map((e) => `<li class="small">${e}</li>`).join("")}</ul>
+      <br><button id="sendJudge">${t("save_case", lang)}</button></div>`;
+  function loadTypes() { return a && {}; }
+  // typed labels from model
+  const model = await (await fetch("data/case_model.json")).json();
+  el("analysis").querySelector("[data-x]").textContent = t("ai_types", lang);
+  el("analysis").querySelector(".chips").innerHTML = a.types.map(([ty, sc]) =>
+    `<span class="chip">${(model.types[ty]?.bn || ty) + (lang === "en" ? " (" + ty + ")" : "")} · ${sc}</span>`).join("") || "—";
+  el("sendJudge").onclick = async () => {
+    const caseNo = "CC-" + new Date().toISOString().slice(0, 10).replace(/-/g, "") + "-" + Math.floor(Math.random() * 900 + 100);
+    const record = { caseNo, facts, analysis: a, status: "PENDING_JUDGE", createdAt: new Date().toISOString() };
+    await add("cases", record);
+    await audit("AI_ANALYSIS", { caseNo, types: a.types, sections: a.sections.map((s) => s.number), model_version: a.modelVersion });
+    el("sendJudge").textContent = (lang === "bn" ? "পাঠানো হয়েছে ✓ (মামলা নং " : "Sent ✓ (case no. ") + caseNo + ")";
+  };
+  el("analyzeBtn").disabled = false;
+};
+</script>
+</body>
+</html>

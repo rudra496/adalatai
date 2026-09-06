@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdalatAI — এআই-সহায়ক আদালত</title>
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="icon" href="assets/icons/icon-192.png">
+<meta property="og:title" content="AdalatAI — AI-assisted courtroom workflow">
+<meta property="og:description" content="AI analyses, quotes the statute verbatim, assembles drafts — the human judge decides and signs. Full audit trail.">
+</head>
+<body>
+<div id="shell">
+<main>
+  <section class="hero">
+    <h1 data-i18n="hero_title">AdalatAI — এআই-সহায়ক আদালত</h1>
+    <p data-i18n="hero_sub">এআই বিশ্লেষণ করে, আইন উদ্ধৃত করে, খসড়া তৈরি করে — চূড়ান্ত সিদ্ধান্ত ও স্বাক্ষর মানব বিচারকের। প্রতিটি এআই-আউটপুট অডিট ট্রেইলে সংরক্ষিত।</p>
+    <div class="rolebtns">
+      <a href="intake.html" data-i18n="role_file">মামলা গ্রহণ ও বিশ্লেষণ</a>
+      <a href="judge.html" data-i18n="role_judge">বিচারক কনসোল</a>
+      <a href="law.html" data-i18n="role_law">আইন ব্রাউজার</a>
+    </div>
+  </section>
+  <div class="actions">
+    <a href="intake.html">🗂<br><span data-i18n="intake">মামলা গ্রহণ</span></a>
+    <a href="judge.html">⚖<br><span data-i18n="judge">বিচারক কনসোল</span></a>
+    <a href="draft.html">📜<br><span data-i18n="draft">রায়ের খসড়া</span></a>
+    <a href="law.html">📚<br><span data-i18n="law">আইন ব্রাউজার</span></a>
+    <a href="analytics.html">📊<br><span data-i18n="analytics">অ্যানালিটিক্স</span></a>
+    <a href="audit.html">🔒<br><span data-i18n="audit">অডিট ট্রেইল</span></a>
+  </div>
+  <div class="note" data-i18n="principle">নীতি: এআই কখনো দোষী সাব্যস্ত করে না, শাস্তি দেয় না — বিশ্লেষণ করে ও উদ্ধৃতি দেয়। চূড়ান্ত সিদ্ধান্ত মানব বিচারকের।</div>
+  <div class="card">
+    <b>Model card (honest):</b>
+    <span class="small">Case-type classifier: multinomial NB, held-out micro-F1 <b>0.988</b> (1,200 test narratives) — trained on template-generated bilingual case narratives (disclosed synthetic, fixed seed). Statute text: <b>verbatim</b> from bdlaws.minlaw.gov.bd (547 sections, fetched 2026-09-06). Retrieval: BM25, recall@5 <b>1.0</b> through the real pipeline. Every number traceable — <a href="https://github.com/rudra496/adalatai">GitHub</a>.</span>
+  </div>
+</main>
+</div>
+<script type="module">
+  import { initShell } from "./assets/js/app.js";
+  initShell("home");
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>রায়ের খসড়া — AdalatAI</title>
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="icon" href="assets/icons/icon-192.png">
+</head>
+<body>
+<div id="shell">
+<main>
+  <h1 data-i18n="draft_title">রায়ের খসড়া (বিচারক সম্পাদনা করবেন)</h1>
+  <div id="draftBox"></div>
+  <p class="small" data-i18n="disclaimer"></p>
+</main>
+</div>
+<script type="module">
+import { initShell, el } from "./assets/js/app.js";
+import { all } from "./assets/js/store.js";
+import { settings } from "./assets/js/store.js";
+
+initShell("draft");
+const lang = settings.lang || "bn";
+const cases = (await all("cases")).filter((c) => c.draft).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+const box = el("draftBox");
+if (!cases.length) {
+  box.innerHTML = `<p class="small">${lang === "bn" ? "কোনো খসড়া নেই — আগে মামলা বিশ্লেষণ করে বিচারক কনসোল থেকে খসড়া তৈরি করুন।" : "No drafts yet — analyze a case and assemble from the Judge Console."}</p>`;
+} else {
+  const c = cases[0];
+  const d = c.draft;
+  box.innerHTML = `
+    <div class="card"><pre style="white-space:pre-wrap;font-family:inherit;font-size:0.95rem">${[
+      d.header, d.facts, d.issues, d.law, d.conclusion, d.signature
+    ].join("\\n\\n")}</pre>
+    <div class="note small">${d.auditNote}</div>
+    <button onclick="window.print()">🖨 Print</button></div>`;
+}
+</script>
+</body>
+</html>

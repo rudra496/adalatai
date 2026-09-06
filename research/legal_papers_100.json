@@ -1,0 +1,1527 @@
+[
+ {
+  "title": "Low intensity transcranial electric stimulation: Safety, ethical, legal regulatory and application guidelines",
+  "authors": [
+   "Andrea Antal",
+   "Ivan Alekseichuk",
+   "Marom Bikson",
+   "Jürgen Brockmöller",
+   "André R. Brunoni",
+   "Robert Chen"
+  ],
+  "year": 2017,
+  "venue": "Clinical Neurophysiology",
+  "doi": "10.1016/j.clinph.2017.06.001",
+  "cited_by": 1350,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Design Justice",
+  "authors": [
+   "Sasha Costanza-Chock"
+  ],
+  "year": 2020,
+  "venue": "The MIT Press eBooks",
+  "doi": "10.7551/mitpress/12255.001.0001",
+  "cited_by": 1605,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Ethical and legal challenges of artificial intelligence-driven healthcare",
+  "authors": [
+   "Sara Gerke",
+   "Timo Minssen",
+   "Glenn Cohen"
+  ],
+  "year": 2020,
+  "venue": "Elsevier eBooks",
+  "doi": "10.1016/b978-0-12-818438-7.00012-5",
+  "cited_by": 1038,
+  "query": "legal chatbot self-represented",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Predicting judicial decisions of the European Court of Human Rights: a Natural Language Processing perspective",
+  "authors": [
+   "Νικόλαος Αλέτρας",
+   "Dimitrios Tsarapatsanis",
+   "Daniel Preoțiuc-Pietro",
+   "Vasileios Lampos"
+  ],
+  "year": 2016,
+  "venue": "PeerJ Computer Science",
+  "doi": "10.7717/peerj-cs.93",
+  "cited_by": 805,
+  "query": "court judgment prediction NLP",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "The Economic Consequences of Legal Origins",
+  "authors": [
+   "Rafael La Porta",
+   "Florencio López‐de‐Silanes",
+   "Andrei Shleifer"
+  ],
+  "year": 2008,
+  "venue": "Journal of Economic Literature",
+  "doi": "10.1257/jel.46.2.285",
+  "cited_by": 3285,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "A Behavioral Approach to Law and Economics",
+  "authors": [
+   "Christine Jolls",
+   "Cass R. Sunstein",
+   "Richard H. Thaler"
+  ],
+  "year": 1998,
+  "venue": "Stanford Law Review",
+  "doi": "10.2307/1229304",
+  "cited_by": 1249,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "An Activation‐Based Model of Sentence Processing as Skilled Memory Retrieval",
+  "authors": [
+   "Richard L. Lewis",
+   "Shravan Vasishth"
+  ],
+  "year": 2005,
+  "venue": "Cognitive Science",
+  "doi": "10.1207/s15516709cog0000_25",
+  "cited_by": 1063,
+  "query": "precedent retrieval",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Why a Right to Explanation of Automated Decision-Making Does Not Exist in the General Data Protection Regulation",
+  "authors": [
+   "Sandra Wachter",
+   "Brent Mittelstadt",
+   "Luciano Floridi"
+  ],
+  "year": 2017,
+  "venue": "International Data Privacy Law",
+  "doi": "10.1093/idpl/ipx005",
+  "cited_by": 1247,
+  "query": "algorithmic decision-making justice ethics",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Just transition: Integrating climate, energy and environmental justice",
+  "authors": [
+   "Darren McCauley",
+   "Raphael J. Heffron"
+  ],
+  "year": 2018,
+  "venue": "Energy Policy",
+  "doi": "10.1016/j.enpol.2018.04.014",
+  "cited_by": 1158,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Cortical activation and synchronization during sentence comprehension in high-functioning autism: evidence of underconnectivity",
+  "authors": [
+   "Marcel Adam Just"
+  ],
+  "year": 2004,
+  "venue": "Brain",
+  "doi": "10.1093/brain/awh199",
+  "cited_by": 1603,
+  "query": "sentencing prediction algorithm",
+  "theme": "T6_sentencing_recidivism",
+  "crossref_ok": true
+ },
+ {
+  "title": "The IT way of loafing on the job: cyberloafing, neutralizing and organizational justice",
+  "authors": [
+   "Vivien K. G. Lim"
+  ],
+  "year": 2002,
+  "venue": "Journal of Organizational Behavior",
+  "doi": "10.1002/job.161",
+  "cited_by": 986,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Distinguish Confusing Law Articles for Legal Judgment Prediction",
+  "authors": [
+   "Nuo Xu",
+   "Pinghui Wang",
+   "Long Chen",
+   "Li Pan",
+   "Xiaoyan Wang",
+   "Junzhou Zhao"
+  ],
+  "year": 2020,
+  "venue": null,
+  "doi": "10.18653/v1/2020.acl-main.280",
+  "cited_by": 163,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Siamese Recurrent Architectures for Learning Sentence Similarity",
+  "authors": [
+   "Jonas Mueller",
+   "Aditya Thyagarajan"
+  ],
+  "year": 2016,
+  "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+  "doi": "10.1609/aaai.v30i1.10350",
+  "cited_by": 933,
+  "query": "sentencing prediction algorithm",
+  "theme": "T6_sentencing_recidivism",
+  "crossref_ok": true
+ },
+ {
+  "title": "NeurJudge: A Circumstance-aware Neural Framework for Legal Judgment Prediction",
+  "authors": [
+   "Linan Yue",
+   "Qi Liu",
+   "Binbin Jin",
+   "Han Wu",
+   "Kai Zhang",
+   "Yanqing An"
+  ],
+  "year": 2021,
+  "venue": null,
+  "doi": "10.1145/3404835.3462826",
+  "cited_by": 82,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Improving legal judgment prediction through reinforced criminal element extraction",
+  "authors": [
+   "Yougang Lyu",
+   "Zihan Wang",
+   "Zhaochun Ren",
+   "Pengjie Ren",
+   "Zhumin Chen",
+   "Xiaozhong Liu"
+  ],
+  "year": 2021,
+  "venue": "Information Processing & Management",
+  "doi": "10.1016/j.ipm.2021.102780",
+  "cited_by": 68,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Legal Document Classification: An Application to Law Area Prediction of Petitions to Public Prosecution Service",
+  "authors": [
+   "Mariana Y. Noguti",
+   "Eduardo Vellasques",
+   "Luiz S. Oliveira"
+  ],
+  "year": 2020,
+  "venue": null,
+  "doi": "10.1109/ijcnn48605.2020.9207211",
+  "cited_by": 32,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Evaluation of Automatic Legal Text Summarization Techniques for Greek Case Law",
+  "authors": [
+   "Marios Koniaris",
+   "Dimitris Galanis",
+   "Eugenia Giannini",
+   "Panayiotis Tsanakas"
+  ],
+  "year": 2023,
+  "venue": "Information",
+  "doi": "10.3390/info14040250",
+  "cited_by": 27,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Neural Summarization by Extracting Sentences and Words",
+  "authors": [
+   "Jianpeng Cheng",
+   "Mirella Lapata"
+  ],
+  "year": 2016,
+  "venue": null,
+  "doi": "10.18653/v1/p16-1046",
+  "cited_by": 756,
+  "query": "sentencing prediction algorithm",
+  "theme": "T6_sentencing_recidivism",
+  "crossref_ok": true
+ },
+ {
+  "title": "The Chinese approach to artificial intelligence: an analysis of policy, ethics, and regulation",
+  "authors": [
+   "Huw Roberts",
+   "Josh Cowls",
+   "Jessica Morley",
+   "Mariarosaria Taddeo",
+   "Vincent Wang",
+   "Luciano Floridi"
+  ],
+  "year": 2020,
+  "venue": "AI & Society",
+  "doi": "10.1007/s00146-020-00992-2",
+  "cited_by": 547,
+  "query": "artificial intelligence courts judiciary",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Rights, Justice, and the Bounds of Liberty",
+  "authors": [
+   "Joël Feinberg"
+  ],
+  "year": 1980,
+  "venue": "Princeton University Press eBooks",
+  "doi": "10.1515/9781400853977",
+  "cited_by": 723,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Criminal justice, artificial intelligence systems, and human rights",
+  "authors": [
+   "Aleš Završník"
+  ],
+  "year": 2020,
+  "venue": "ERA Forum",
+  "doi": "10.1007/s12027-020-00602-0",
+  "cited_by": 223,
+  "query": "artificial intelligence courts judiciary",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "The Rise of Digital Justice: Courtroom Technology, Public Participation and Access to Justice",
+  "authors": [
+   "Jane Donoghue"
+  ],
+  "year": 2017,
+  "venue": "Modern Law Review",
+  "doi": "10.1111/1468-2230.12300",
+  "cited_by": 93,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Online Courts and the Future of Justice",
+  "authors": [
+   "Richard Susskind"
+  ],
+  "year": 2019,
+  "venue": null,
+  "doi": "10.1093/oso/9780198838364.001.0001",
+  "cited_by": 367,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Legal and human rights issues of AI: Gaps, challenges and vulnerabilities",
+  "authors": [
+   "Rowena Rodrigues"
+  ],
+  "year": 2020,
+  "venue": "Journal of Responsible Technology",
+  "doi": "10.1016/j.jrt.2020.100005",
+  "cited_by": 484,
+  "query": "AI judge human rights",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Legal Judgment Prediction via Topological Learning",
+  "authors": [
+   "Haoxi Zhong",
+   "Zhipeng Guo",
+   "Cunchao Tu",
+   "Chaojun Xiao",
+   "Zhiyuan Liu",
+   "Maosong Sun"
+  ],
+  "year": 2018,
+  "venue": null,
+  "doi": "10.18653/v1/d18-1390",
+  "cited_by": 347,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Human Judgment in algorithmic loops: Individual justice and automated decision‐making",
+  "authors": [
+   "Reuben Binns"
+  ],
+  "year": 2020,
+  "venue": "Regulation & Governance",
+  "doi": "10.1111/rego.12358",
+  "cited_by": 123,
+  "query": "algorithmic decision-making justice ethics",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "A Survey on Legal Judgment Prediction: Datasets, Metrics, Models and Challenges",
+  "authors": [
+   "Junyun Cui",
+   "Xiaoyu Shen",
+   "Shaochun Wen"
+  ],
+  "year": 2023,
+  "venue": "IEEE Access",
+  "doi": "10.1109/access.2023.3317083",
+  "cited_by": 93,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "LeCaRD: A Legal Case Retrieval Dataset for Chinese Law System",
+  "authors": [
+   "Yixiao Ma",
+   "Yunqiu Shao",
+   "Yueyue Wu",
+   "Yiqun Liu",
+   "Ruizhe Zhang",
+   "Min Zhang"
+  ],
+  "year": 2021,
+  "venue": null,
+  "doi": "10.1145/3404835.3463250",
+  "cited_by": 93,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "LexNLP: Natural language processing and information extraction for legal and regulatory texts",
+  "authors": [
+   "Michael James Bommarito",
+   "Daniel Katz",
+   "Eric M Detterman"
+  ],
+  "year": 2021,
+  "venue": "Edward Elgar Publishing eBooks",
+  "doi": "10.4337/9781788972826.00017",
+  "cited_by": 74,
+  "query": "legal natural language processing",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Legal Judgment Prediction via Event Extraction with Constraints",
+  "authors": [
+   "Yi Feng",
+   "Chuanyi Li",
+   "Vincent Ng"
+  ],
+  "year": 2022,
+  "venue": "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+  "doi": "10.18653/v1/2022.acl-long.48",
+  "cited_by": 66,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Criminal courts’ artificial intelligence: the way it reinforces bias and discrimination",
+  "authors": [
+   "Abdul Malek"
+  ],
+  "year": 2022,
+  "venue": "AI and Ethics",
+  "doi": "10.1007/s43681-022-00137-9",
+  "cited_by": 64,
+  "query": "artificial intelligence courts judiciary",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Swiss-Judgment-Prediction: A Multilingual Legal Judgment Prediction Benchmark",
+  "authors": [
+   "Joel Niklaus",
+   "Ilias Chalkidis",
+   "Matthias Stürmer"
+  ],
+  "year": 2021,
+  "venue": null,
+  "doi": "10.18653/v1/2021.nllp-1.3",
+  "cited_by": 55,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Legal Judgment Prediction via Relational Learning",
+  "authors": [
+   "Dong Qian",
+   "Shuzi Niu"
+  ],
+  "year": 2021,
+  "venue": null,
+  "doi": "10.1145/3404835.3462931",
+  "cited_by": 52,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Contrastive Learning for Legal Judgment Prediction",
+  "authors": [
+   "Han Zhang",
+   "Zhicheng Dou",
+   "Yutao Zhu",
+   "Ji-Rong Wen"
+  ],
+  "year": 2023,
+  "venue": "ACM Transactions on Information Systems",
+  "doi": "10.1145/3580489",
+  "cited_by": 50,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Access to technology, access to justice: China’s artificial intelligence application in criminal proceedings",
+  "authors": [
+   "Wanqiang Wu",
+   "Xifen Lin"
+  ],
+  "year": 2025,
+  "venue": "International journal of law, crime and justice",
+  "doi": "10.1016/j.ijlcj.2025.100741",
+  "cited_by": 20,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Human heuristics for AI-generated language are flawed",
+  "authors": [
+   "Maurice Jakesch",
+   "Jeffrey T. Hancock",
+   "Mor Naaman"
+  ],
+  "year": 2023,
+  "venue": "Proceedings of the National Academy of Sciences",
+  "doi": "10.1073/pnas.2208839120",
+  "cited_by": 320,
+  "query": "AI judge human rights",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Using machine learning to predict decisions of the European Court of Human Rights",
+  "authors": [
+   "Masha Medvedeva",
+   "Michel Vols",
+   "Martijn Wieling"
+  ],
+  "year": 2019,
+  "venue": "Artificial Intelligence and Law",
+  "doi": "10.1007/s10506-019-09255-y",
+  "cited_by": 427,
+  "query": "artificial intelligence courts judiciary",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Legal Judgment Prediction via Multi-Perspective Bi-Feedback Network",
+  "authors": [
+   "Wenmian Yang",
+   "Weijia Jia",
+   "Xiaojie Zhou",
+   "Yutao Luo"
+  ],
+  "year": 2019,
+  "venue": null,
+  "doi": "10.24963/ijcai.2019/567",
+  "cited_by": 98,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "MANN: A Multichannel Attentive Neural Network for Legal Judgment Prediction",
+  "authors": [
+   "Shang Li",
+   "Hongli Zhang",
+   "Lin Ye",
+   "Xiaoding Guo",
+   "Binxing Fang"
+  ],
+  "year": 2019,
+  "venue": "IEEE Access",
+  "doi": "10.1109/access.2019.2945771",
+  "cited_by": 65,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Preserving the rule of law in the era of artificial intelligence (AI)",
+  "authors": [
+   "Stanley Greenstein"
+  ],
+  "year": 2021,
+  "venue": "Artificial Intelligence and Law",
+  "doi": "10.1007/s10506-021-09294-4",
+  "cited_by": 159,
+  "query": "artificial intelligence courts judiciary",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Addressing Legal and Contractual Matters in Construction Using Natural Language Processing: A Critical Review",
+  "authors": [
+   "Fahad Hassan",
+   "Tuyen Le",
+   "Xuan Lv"
+  ],
+  "year": 2021,
+  "venue": "Journal of Construction Engineering and Management",
+  "doi": "10.1061/(asce)co.1943-7862.0002122",
+  "cited_by": 87,
+  "query": "legal natural language processing",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Overview and Discussion of the Competition on Legal Information Extraction/Entailment (COLIEE) 2021",
+  "authors": [
+   "Juliano Rabelo",
+   "Randy Goebel",
+   "Miyoung Kim",
+   "Yoshinobu Kano",
+   "Masaharu Yoshioka",
+   "Ken Satoh"
+  ],
+  "year": 2022,
+  "venue": "The Review of Socionetwork Strategies",
+  "doi": "10.1007/s12626-022-00105-z",
+  "cited_by": 87,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "MultiEURLEX - A multi-lingual and multi-label legal document classification dataset for zero-shot cross-lingual transfer",
+  "authors": [
+   "Ilias Chalkidis",
+   "Manos Fergadiotis",
+   "Ion Androutsopoulos"
+  ],
+  "year": 2021,
+  "venue": "Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing",
+  "doi": "10.18653/v1/2021.emnlp-main.559",
+  "cited_by": 85,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Natural Language Processing in the Legal Domain",
+  "authors": [
+   "Dirk Hartung",
+   "Daniel Martin Katz",
+   "Michael James Bommarito",
+   "Lauritz Gerlach",
+   "Abhik Jana",
+   "Jerrold Soh"
+  ],
+  "year": 2023,
+  "venue": "SSRN Electronic Journal",
+  "doi": "10.2139/ssrn.4336224",
+  "cited_by": 81,
+  "query": "legal natural language processing",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Multi-label legal document classification: A deep learning-based approach with label-attention and domain-specific pre-training",
+  "authors": [
+   "Dezhao Song",
+   "Andrew Vold",
+   "Kanika Madan",
+   "Frank Schilder"
+  ],
+  "year": 2021,
+  "venue": "Information Systems",
+  "doi": "10.1016/j.is.2021.101718",
+  "cited_by": 79,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Evaluating causes of algorithmic bias in juvenile criminal recidivism",
+  "authors": [
+   "Marius Miron",
+   "Songül Tolan",
+   "Emília Gómez",
+   "Carlos Castillo"
+  ],
+  "year": 2020,
+  "venue": "Artificial Intelligence and Law",
+  "doi": "10.1007/s10506-020-09268-y",
+  "cited_by": 53,
+  "query": "recidivism prediction COMPAS bias",
+  "theme": "T6_sentencing_recidivism",
+  "crossref_ok": true
+ },
+ {
+  "title": "Queering reproductive access: reproductive justice in assisted reproductive technologies",
+  "authors": [
+   "Michelle Tam"
+  ],
+  "year": 2021,
+  "venue": "Reproductive Health",
+  "doi": "10.1186/s12978-021-01214-8",
+  "cited_by": 48,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Code is law: how COMPAS affects the way the judiciary handles the risk of recidivism",
+  "authors": [
+   "Christoph Engel",
+   "Lorenz Linhardt",
+   "Marcel Schubert"
+  ],
+  "year": 2024,
+  "venue": "Artificial Intelligence and Law",
+  "doi": "10.1007/s10506-024-09389-8",
+  "cited_by": 47,
+  "query": "recidivism prediction COMPAS bias",
+  "theme": "T6_sentencing_recidivism",
+  "crossref_ok": true
+ },
+ {
+  "title": "Procedural Justice in Algorithmic Fairness",
+  "authors": [
+   "Min Kyung Lee",
+   "Anuraag Jain",
+   "Hea Jin",
+   "Shashank Kumar Ojha",
+   "Daniel Kusbit"
+  ],
+  "year": 2019,
+  "venue": "Proceedings of the ACM on Human-Computer Interaction",
+  "doi": "10.1145/3359284",
+  "cited_by": 226,
+  "query": "algorithmic decision-making justice ethics",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Online Dispute Resolution and the Future of Justice",
+  "authors": [
+   "Colin Rule"
+  ],
+  "year": 2020,
+  "venue": "Annual Review of Law and Social Science",
+  "doi": "10.1146/annurev-lawsocsci-101518-043049",
+  "cited_by": 45,
+  "query": "online dispute resolution",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Effectively Leveraging BERT for Legal Document Classification",
+  "authors": [
+   "Nut Limsopatham"
+  ],
+  "year": 2021,
+  "venue": null,
+  "doi": "10.18653/v1/2021.nllp-1.22",
+  "cited_by": 41,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Artificial intelligence and speedy trial in the judiciary: Myth, reality or need? A case study in the Brazilian Supreme Court (STF)",
+  "authors": [
+   "Weslei Gomes de Sousa",
+   "Rafael Antunes Fidelis",
+   "Paulo Henrique de Souza Bermejo",
+   "Ana Gersica da Silva Gonçalo",
+   "Bruno de Souza Melo"
+  ],
+  "year": 2021,
+  "venue": "Government Information Quarterly",
+  "doi": "10.1016/j.giq.2021.101660",
+  "cited_by": 36,
+  "query": "artificial intelligence courts judiciary",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Deep Learning Techniques for Legal Text Summarization",
+  "authors": [
+   "Reshma Sheik",
+   "S. Jaya Nirmala"
+  ],
+  "year": 2021,
+  "venue": "2021 IEEE 8th Uttar Pradesh Section International Conference on Electrical, Electronics and Computer Engineering (UPCON)",
+  "doi": "10.1109/upcon52273.2021.9667640",
+  "cited_by": 31,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "LegalDB: Long DistilBERT for Legal Document Classification",
+  "authors": [
+   "Purbid Bambroo",
+   "Aditi Awasthi"
+  ],
+  "year": 2021,
+  "venue": "2021 International Conference on Advances in Electrical, Computing, Communication and Sustainable Technologies (ICAECT)",
+  "doi": "10.1109/icaect49130.2021.9392558",
+  "cited_by": 31,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Verdict Prediction for Indian Courts Using Bag of Words and Convolutional Neural Network",
+  "authors": [
+   "V Gokul Pillai",
+   "Lekshmi R. Chandran"
+  ],
+  "year": 2020,
+  "venue": "2020 Third International Conference on Smart Systems and Inventive Technology (ICSSIT)",
+  "doi": "10.1109/icssit48917.2020.9214278",
+  "cited_by": 30,
+  "query": "court judgment prediction NLP",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Indian Legal Text Summarization: A Text Normalization-based Approach",
+  "authors": [
+   "Satyajit Ghosh",
+   "Mousumi Dutta",
+   "Tanaya Das"
+  ],
+  "year": 2022,
+  "venue": "2022 IEEE 19th India Council International Conference (INDICON)",
+  "doi": "10.1109/indicon56171.2022.10039891",
+  "cited_by": 28,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Using Argument Mining for Legal Text Summarization",
+  "authors": [
+   "Huihui Xu",
+   "Jaromír Šavelka",
+   "Kevin D. Ashley"
+  ],
+  "year": 2020,
+  "venue": "Frontiers in artificial intelligence and applications",
+  "doi": "10.3233/faia200862",
+  "cited_by": 25,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Legal Natural Language Processing From 2015 to 2022: A Comprehensive Systematic Mapping Study of Advances and Applications",
+  "authors": [
+   "Ernesto Quevedo",
+   "Tomas Cerny",
+   "Alejandro Rodríguez",
+   "Pablo Rivas",
+   "Jorge Yero",
+   "Korn Sooksatra"
+  ],
+  "year": 2023,
+  "venue": "IEEE Access",
+  "doi": "10.1109/access.2023.3333946",
+  "cited_by": 24,
+  "query": "legal natural language processing",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Text summarization from legal documents: a survey",
+  "authors": [
+   "Ambedkar Kanapala",
+   "Sukomal Pal",
+   "Rajendra Pamula"
+  ],
+  "year": 2017,
+  "venue": "Artificial Intelligence Review",
+  "doi": "10.1007/s10462-017-9566-2",
+  "cited_by": 196,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Optimizing Legal Text Summarization Through Dynamic Retrieval-Augmented Generation and Domain-Specific Adaptation",
+  "authors": [
+   "Smruthi Mukund",
+   "K. S. Easwarakumar"
+  ],
+  "year": 2025,
+  "venue": "Symmetry",
+  "doi": "10.3390/sym17050633",
+  "cited_by": 16,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Comparison of data augmentation methods for legal document classification",
+  "authors": [
+   "Gergely Márk Csányi",
+   "Tamás Orosz"
+  ],
+  "year": 2021,
+  "venue": "Acta Technica Jaurinensis",
+  "doi": "10.14513/actatechjaur.00628",
+  "cited_by": 15,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Automation of Legal Precedents Retrieval: Findings from a Literature Review",
+  "authors": [
+   "Hugo Mentzingen",
+   "Nuno António",
+   "Fernando Bação"
+  ],
+  "year": 2023,
+  "venue": "International Journal of Intelligent Systems",
+  "doi": "10.1155/2023/6660983",
+  "cited_by": 15,
+  "query": "precedent retrieval",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "D2GCLF: Document-to-Graph Classifier for Legal Document Classification",
+  "authors": [
+   "Qiqi Wang",
+   "Kaiqi Zhao",
+   "Robert Amor",
+   "Benjamin Liu",
+   "Ruofan Wang"
+  ],
+  "year": 2022,
+  "venue": "Findings of the Association for Computational Linguistics: NAACL 2022",
+  "doi": "10.18653/v1/2022.findings-naacl.170",
+  "cited_by": 11,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Privacy-Preserving Models for Legal Natural Language Processing",
+  "authors": [
+   "Ying Yin",
+   "Ivan Habernal"
+  ],
+  "year": 2022,
+  "venue": null,
+  "doi": "10.18653/v1/2022.nllp-1.14",
+  "cited_by": 9,
+  "query": "legal natural language processing",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "A Rapid Semi-automated Literature Review on Legal Precedents Retrieval",
+  "authors": [
+   "Hugo Silva",
+   "Nuno António",
+   "Fernando Bação"
+  ],
+  "year": 2022,
+  "venue": "Lecture notes in computer science",
+  "doi": "10.1007/978-3-031-16474-3_5",
+  "cited_by": 9,
+  "query": "precedent retrieval",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Algorithmic discrimination and explainable artificial intelligence in the judiciary: a case study of the Constitutional Court of Colombia",
+  "authors": [
+   "Beliña Annery Herrera Tapias",
+   "Diego Hernández Guzmán",
+   "Neuro José Zambam",
+   "Luciana Turatti",
+   "Ferney Asdrúbal Rodríguez",
+   "Sandro Fröhlich"
+  ],
+  "year": 2025,
+  "venue": "Procedia Computer Science",
+  "doi": "10.1016/j.procs.2025.03.164",
+  "cited_by": 4,
+  "query": "artificial intelligence courts judiciary",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "Citation Anchor Text for Improving Precedent Retrieval: An Experimental Study on Indian Legal Documents",
+  "authors": [
+   "Gaurang Patil",
+   "Bhoomeendra Singh Sisodiya",
+   "P. Krishna Reddy",
+   "K.V.K. Santhy"
+  ],
+  "year": 2024,
+  "venue": "Frontiers in artificial intelligence and applications",
+  "doi": "10.3233/faia241241",
+  "cited_by": 1,
+  "query": "precedent retrieval",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Effective deep learning approaches for summarization of legal texts",
+  "authors": [
+   "Deepa Anand",
+   "Rupali Sunil Wagh"
+  ],
+  "year": 2019,
+  "venue": "Journal of King Saud University - Computer and Information Sciences",
+  "doi": "10.1016/j.jksuci.2019.11.015",
+  "cited_by": 142,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Some Speculation about Artificial Intelligence and Legal Reasoning",
+  "authors": [
+   "Bruce G. Buchanan",
+   "Thomas E. Headrick"
+  ],
+  "year": 1970,
+  "venue": "Stanford Law Review",
+  "doi": "10.2307/1227753",
+  "cited_by": 139,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "On the concept of relevance in legal information retrieval",
+  "authors": [
+   "Marc van Opijnen",
+   "Cristiana Santos"
+  ],
+  "year": 2017,
+  "venue": "Artificial Intelligence and Law",
+  "doi": "10.1007/s10506-017-9195-8",
+  "cited_by": 134,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Regulating Artificial Intelligence",
+  "authors": [
+   "Olivia Johanna Erdélyi",
+   "Judy Goldsmith"
+  ],
+  "year": 2018,
+  "venue": null,
+  "doi": "10.1145/3278721.3278731",
+  "cited_by": 134,
+  "query": "artificial intelligence courts judiciary",
+  "theme": "T4_ai_courts_ethics",
+  "crossref_ok": true
+ },
+ {
+  "title": "NLP Based Latent Semantic Analysis for Legal Text Summarization",
+  "authors": [
+   "Kaiz Merchant",
+   "Yash Pande"
+  ],
+  "year": 2018,
+  "venue": null,
+  "doi": "10.1109/icacci.2018.8554831",
+  "cited_by": 116,
+  "query": "legal text summarization",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Empirical Study of Deep Learning for Text Classification in Legal Document Review",
+  "authors": [
+   "Fusheng Wei",
+   "Han Qin",
+   "Shi Ye",
+   "Haozhen Zhao"
+  ],
+  "year": 2018,
+  "venue": null,
+  "doi": "10.1109/bigdata.2018.8622157",
+  "cited_by": 100,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "BankXX: Supporting legal arguments through heuristic retrieval",
+  "authors": [
+   "Edwina L. Rissland",
+   "David B. Skalak",
+   "M. Friedman"
+  ],
+  "year": 1996,
+  "venue": "Artificial Intelligence and Law",
+  "doi": "10.1007/bf00123994",
+  "cited_by": 85,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Online dispute resolution: The future of justice",
+  "authors": [
+   "Karolina Mania"
+  ],
+  "year": 2015,
+  "venue": "International Comparative Jurisprudence",
+  "doi": "10.1016/j.icj.2015.10.006",
+  "cited_by": 83,
+  "query": "online dispute resolution",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Concept and Context in Legal Information Retrieval",
+  "authors": [
+   "Maxwell K. Tamsin",
+   "Burkhard Schäfer"
+  ],
+  "year": 2008,
+  "venue": "Frontiers in artificial intelligence and applications",
+  "doi": "10.3233/978-1-58603-952-3-63",
+  "cited_by": 76,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Automated Extraction of Semantic Legal Metadata using Natural Language Processing",
+  "authors": [
+   "Amin Sleimi",
+   "Nicolas Sannier",
+   "Mehrdad Sabetzadeh",
+   "Lionel Briand",
+   "John Dann"
+  ],
+  "year": 2018,
+  "venue": null,
+  "doi": "10.1109/re.2018.00022",
+  "cited_by": 69,
+  "query": "legal natural language processing",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Cross-language information retrieval in a Multilingual Legal Domain",
+  "authors": [
+   "Páraic Sheridan",
+   "Martin Braschlert",
+   "Peter Scháuble"
+  ],
+  "year": 1997,
+  "venue": "Lecture notes in computer science",
+  "doi": "10.1007/bfb0026732",
+  "cited_by": 57,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Online Dispute Resolution: Some Implications for the Emergence of Law in Cyberspace1",
+  "authors": [
+   "Ethan Katsh"
+  ],
+  "year": 2007,
+  "venue": "International Review of Law Computers & Technology",
+  "doi": "10.1080/13600860701492096",
+  "cited_by": 51,
+  "query": "online dispute resolution",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Environmental Justice and Information Technologies: Overcoming the Information‐Access Paradox in Urban Communities",
+  "authors": [
+   "Wendy A. Kellogg",
+   "Anjali Mathur"
+  ],
+  "year": 2003,
+  "venue": "Public Administration Review",
+  "doi": "10.1111/1540-6210.00321",
+  "cited_by": 45,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Access to and use of everyday technology among older people: An occupational justice issue – but for whom?",
+  "authors": [
+   "Anders Kottorp",
+   "Louise Nygård",
+   "Annicka Hedman",
+   "Annika Öhman",
+   "Camilla Malinowsky",
+   "Lena Rosenberg"
+  ],
+  "year": 2016,
+  "venue": "Journal of Occupational Science",
+  "doi": "10.1080/14427591.2016.1151457",
+  "cited_by": 43,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "An Evolving Hybrid Deep Learning Framework for Legal Document Classification",
+  "authors": [
+   "Neha Bansal",
+   "Arun Sharma",
+   "R. K. Singh"
+  ],
+  "year": 2019,
+  "venue": "Ingénierie des systèmes d information",
+  "doi": "10.18280/isi.240410",
+  "cited_by": 21,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "ACCESS TO JUSTICE FOR ALL: TOWARDS AN “EXPANSIVE VISION” OF JUSTICE AND TECHNOLOGY",
+  "authors": [
+   "Jane Bailey",
+   "Jacquelyn Burkell",
+   "Graham Reynolds"
+  ],
+  "year": 2013,
+  "venue": "Windsor Yearbook of Access to Justice",
+  "doi": "10.22329/wyaj.v31i2.4419",
+  "cited_by": 18,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Nonlinear Nearest-Neighbour Matching and Its Application in Legal Precedent Retrieval",
+  "authors": [
+   "Ruili Wang",
+   "Yiming Zeng"
+  ],
+  "year": 2005,
+  "venue": null,
+  "doi": "10.1109/icita.2005.191",
+  "cited_by": 6,
+  "query": "precedent retrieval",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "What if the devil is my guardian angel: ChatGPT as a case study of using chatbots in education",
+  "authors": [
+   "Ahmed Tlili",
+   "Boulus Shehata",
+   "Michael Agyemang Adarkwah",
+   "Aras Bozkurt",
+   "Daniel T. Hickey",
+   "Ronghuai Huang"
+  ],
+  "year": 2023,
+  "venue": "Smart Learning Environments",
+  "doi": "10.1186/s40561-023-00237-x",
+  "cited_by": 1800,
+  "query": "legal chatbot self-represented",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "Energy justice in the transition to low carbon energy systems: Exploring key themes in interdisciplinary research",
+  "authors": [
+   "Darren McCauley",
+   "Vasna Ramasar",
+   "Raphael J. Heffron",
+   "Benjamin K. Sovacool",
+   "Desta Mebratu",
+   "Luis Mundaca"
+  ],
+  "year": 2018,
+  "venue": "Applied Energy",
+  "doi": "10.1016/j.apenergy.2018.10.005",
+  "cited_by": 505,
+  "query": "technology access to justice",
+  "theme": "T5_access_to_justice",
+  "crossref_ok": true
+ },
+ {
+  "title": "How Does NLP Benefit Legal System: A Summary of Legal Artificial Intelligence",
+  "authors": [
+   "Haoxi Zhong",
+   "Chaojun Xiao",
+   "Cunchao Tu",
+   "Tianyang Zhang",
+   "Zhiyuan Liu",
+   "Maosong Sun"
+  ],
+  "year": 2020,
+  "venue": null,
+  "doi": "10.18653/v1/2020.acl-main.466",
+  "cited_by": 348,
+  "query": "court judgment prediction NLP",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Iteratively Questioning and Answering for Interpretable Legal Judgment Prediction",
+  "authors": [
+   "Haoxi Zhong",
+   "Yuzhong Wang",
+   "Cunchao Tu",
+   "Tianyang Zhang",
+   "Zhiyuan Liu",
+   "Maosong Sun"
+  ],
+  "year": 2020,
+  "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+  "doi": "10.1609/aaai.v34i01.5479",
+  "cited_by": 107,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Rethinking the field of automatic prediction of court decisions",
+  "authors": [
+   "Masha Medvedeva",
+   "Martijn Wieling",
+   "Michel Vols"
+  ],
+  "year": 2022,
+  "venue": "Artificial Intelligence and Law",
+  "doi": "10.1007/s10506-021-09306-3",
+  "cited_by": 87,
+  "query": "court judgment prediction NLP",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Legal Judgment Prediction: A Survey of the State of the Art",
+  "authors": [
+   "Yi Feng",
+   "Chuanyi Li",
+   "Vincent Ng"
+  ],
+  "year": 2022,
+  "venue": null,
+  "doi": "10.24963/ijcai.2022/765",
+  "cited_by": 42,
+  "query": "legal judgment prediction",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "On the Effectiveness of Pre-Trained Language Models for Legal Natural Language Processing: An Empirical Study",
+  "authors": [
+   "Dezhao Song",
+   "Sally Gao",
+   "Baosheng He",
+   "Frank Schilder"
+  ],
+  "year": 2022,
+  "venue": "IEEE Access",
+  "doi": "10.1109/access.2022.3190408",
+  "cited_by": 28,
+  "query": "legal natural language processing",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Precedent Case Retrieval using Wordnet and Deep Recurrent Neural Networks",
+  "authors": [
+   "Sai Vishwas Padigi",
+   "Mohit Mayank",
+   "Sayee Natarajan"
+  ],
+  "year": 2019,
+  "venue": null,
+  "doi": "10.5121/csit.2019.91608",
+  "cited_by": 6,
+  "query": "precedent retrieval",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Automation of legal precedents retrieval: findings from a rapid literature review",
+  "authors": [
+   "Hugo Mentzingen",
+   "Fernando Bação",
+   "Nuno António"
+  ],
+  "year": 2022,
+  "venue": "Research Square",
+  "doi": "10.21203/rs.3.rs-2292464/v1",
+  "cited_by": 2,
+  "query": "precedent retrieval",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "Gradient-based learning applied to document recognition",
+  "authors": [
+   "Yann LeCun",
+   "Léon Bottou",
+   "Yoshua Bengio",
+   "Patrick Haffner"
+  ],
+  "year": 1998,
+  "venue": "Proceedings of the IEEE",
+  "doi": "10.1109/5.726791",
+  "cited_by": 59516,
+  "query": "legal document classification",
+  "theme": "T2_legal_nlp",
+  "crossref_ok": true
+ },
+ {
+  "title": "Highly accurate protein structure prediction with AlphaFold",
+  "authors": [
+   "John Jumper",
+   "Richard Evans",
+   "Alexander Pritzel",
+   "Tim Green",
+   "Michael Figurnov",
+   "Olaf Ronneberger"
+  ],
+  "year": 2021,
+  "venue": "Nature",
+  "doi": "10.1038/s41586-021-03819-2",
+  "cited_by": 47045,
+  "query": "case outcome prediction machine learning",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "A survey on deep learning in medical image analysis",
+  "authors": [
+   "Geert Litjens",
+   "Thijs Kooi",
+   "Babak Ehteshami Bejnordi",
+   "Arnaud A. A. Setio",
+   "Francesco Ciompi",
+   "Mohsen Ghafoorian"
+  ],
+  "year": 2017,
+  "venue": "Medical Image Analysis",
+  "doi": "10.1016/j.media.2017.07.005",
+  "cited_by": 15122,
+  "query": "case outcome prediction machine learning",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Data clustering",
+  "authors": [
+   "Anil K. Jain",
+   "M. Narasimha Murty",
+   "Patrick J. Flynn"
+  ],
+  "year": 1999,
+  "venue": "ACM Computing Surveys",
+  "doi": "10.1145/331499.331504",
+  "cited_by": 13266,
+  "query": "legal information retrieval case law",
+  "theme": "T3_legal_retrieval",
+  "crossref_ok": true
+ },
+ {
+  "title": "The Phyre2 web portal for protein modeling, prediction and analysis",
+  "authors": [
+   "Lawrence A. Kelley",
+   "Stefans Mezulis",
+   "Christopher M. Yates",
+   "Mark N. Wass",
+   "Michael J.E. Sternberg"
+  ],
+  "year": 2015,
+  "venue": "Nature Protocols",
+  "doi": "10.1038/nprot.2015.053",
+  "cited_by": 10345,
+  "query": "case outcome prediction machine learning",
+  "theme": "T1_legal_judgment_prediction",
+  "crossref_ok": true
+ },
+ {
+  "title": "Explainable Artificial Intelligence (XAI): Concepts, taxonomies, opportunities and challenges toward responsible AI",
+  "authors": [
+   "Alejandro Barredo Arrieta",
+   "Natalia Díaz-Rodríguez",
+   "Javier Del Ser",
+   "Adrien Bennetot",
+   "Siham Tabik",
+   "Alberto Barbado"
+  ],
+  "year": 2019,
+  "venue": "Information Fusion",
+  "doi": "10.1016/j.inffus.2019.12.012",
+  "cited_by": 9820,
+  "query": "recidivism prediction COMPAS bias",
+  "theme": "T6_sentencing_recidivism",
+  "crossref_ok": true
+ },
+ {
+  "title": "Simple statistical gradient-following algorithms for connectionist reinforcement learning",
+  "authors": [
+   "Ronald J. Williams"
+  ],
+  "year": 1992,
+  "venue": "Machine Learning",
+  "doi": "10.1007/bf00992696",
+  "cited_by": 7520,
+  "query": "sentencing prediction algorithm",
+  "theme": "T6_sentencing_recidivism",
+  "crossref_ok": true
+ }
+]

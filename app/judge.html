@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>বিচারক কনসোল — AdalatAI</title>
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="icon" href="assets/icons/icon-192.png">
+</head>
+<body>
+<div id="shell">
+<main>
+  <h1 data-i18n="judge_title">বিচারক কনসোল — পর্যালোচনা ও অনুমোদন</h1>
+  <p class="small" data-i18n="judge_note">প্রতিটি এআই-সাজেশন পর্যালোচনা করুন। সম্পাদনা করুন বা বাতিল করুন। চূড়ান্ত আদেশ আপনার স্বাক্ষরেই।</p>
+  <div id="queue"></div>
+</main>
+</div>
+<script type="module">
+import { initShell, el, audit } from "./assets/js/app.js";
+import { all, put } from "./assets/js/store.js";
+import { settings } from "./assets/js/store.js";
+import { t } from "./assets/js/i18n.js";
+import { assembleDraft } from "./assets/js/court.js";
+
+initShell("judge");
+const lang = settings.lang || "bn";
+
+async function render() {
+  const cases = (await all("cases")).filter((c) => c.status === "PENDING_JUDGE").sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  const box = el("queue");
+  if (!cases.length) { box.innerHTML = `<p class="small">${t("no_cases", lang)}</p>`; return; }
+  box.innerHTML = cases.map((c) => `
+    <div class="card">
+      <b>${c.caseNo}</b> <span class="small">${new Date(c.createdAt).toLocaleString()}</span>
+      <p class="small">${c.facts}</p>
+      <b>${t("ai_types", lang)}:</b> ${c.analysis.types.map(([ty]) => ty).join(", ")}<br>
+      <b>${t("ai_sections", lang)}:</b> ${c.analysis.sections.map((s) => "ধারা " + s.number).join(", ")}
+      <details><summary class="small">${lang === "bn" ? "সম্পূর্ণ এআই-বিশ্লেষণ দেখুন" : "Full AI analysis"}</summary>
+        ${c.analysis.sections.map((s) => `<div class="note"><b>ধারা ${s.number}</b> <i>"${s.text}"</i></div>`).join("")}
+      </details>
+      <br>
+      <textarea id="edit-${c.id}" rows="4" style="width:100%">${c.judgeNote || ""}</textarea>
+      <small>${lang === "bn" ? "বিচারকের মন্তব্য / সংশোধন:" : "Judge's note / corrections:"}</small><br><br>
+      <button data-approve="${c.id}">${t("approve", lang)}</button>
+      <button class="danger" data-override="${c.id}">${t("override", lang)}</button>
+      <button class="secondary" data-draft="${c.id}">${t("draft", lang)}</button>
+    </div>`).join("");
+  box.querySelectorAll("button[data-approve]").forEach((b) => b.onclick = async () => {
+    const c = cases.find((x) => x.id === Number(b.dataset.approve));
+    c.status = "APPROVED"; c.judgeNote = el("edit-" + c.id).value;
+    c.signedBy = "HUMAN JUDGE"; c.signedAt = new Date().toISOString();
+    await put("cases", c);
+    await audit("JUDGE_APPROVED", { caseNo: c.caseNo, judgeNote: c.judgeNote });
+    render();
+  });
+  box.querySelectorAll("button[data-override]").forEach((b) => b.onclick = async () => {
+    const c = cases.find((x) => x.id === Number(b.dataset.override));
+    c.status = "OVERRIDDEN"; c.judgeNote = el("edit-" + c.id).value;
+    await put("cases", c);
+    await audit("JUDGE_OVERRIDE", { caseNo: c.caseNo, note: "AI suggestions rejected/modified by judge" });
+    render();
+  });
+  box.querySelectorAll("button[data-draft]").forEach((b) => b.onclick = async () => {
+    const c = cases.find((x) => x.id === Number(b.dataset.draft));
+    c.draft = assembleDraft(c, c.analysis);
+    c.judgeNote = el("edit-" + c.id).value;
+    await put("cases", c);
+    await audit("DRAFT_ASSEMBLED", { caseNo: c.caseNo });
+    location.href = "draft.html";
+  });
+}
+render();
+</script>
+</body>
+</html>

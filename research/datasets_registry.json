@@ -1,0 +1,815 @@
+{
+ "registry": "AdalatAI data sources & datasets — 100 entries, URL-verified live 2026-09-06",
+ "verified_count": 69,
+ "blocked_or_redirect_note": "Some official portals block automated requests (403/anti-bot) yet remain valid human-usable sources — status recorded per entry, nothing invented.",
+ "categories": {
+  "C1": "Legal NLP benchmark dataset",
+  "C2": "Bangladesh justice data source",
+  "C3": "Global justice statistics",
+  "C4": "Bangla NLP corpus",
+  "C5": "Sentencing / fairness dataset",
+  "C6": "Statute / case-law database"
+ },
+ "entries": [
+  {
+   "name": "CaseHOLD",
+   "url": "https://huggingface.co/datasets/casehold/casehold",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "US case-law holding identification — precedent-extraction model design reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "MultiEURLEX",
+   "url": "https://huggingface.co/datasets/nlpaueb/multi_eurlex",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Multilingual legal classification — multilingual design reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "CUAD",
+   "url": "https://www.atticusprojectai.org/cuad",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Contract clause extraction benchmark",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "LegalBench",
+   "url": "https://huggingface.co/datasets/nguha/legalbench",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "162-task collaborative legal reasoning benchmark",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "MAUD",
+   "url": "https://www.atticusprojectai.org/maud",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "M&A contract review benchmark",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "bdlaws.minlaw.gov.bd — Laws of Bangladesh",
+   "url": "http://bdlaws.minlaw.gov.bd/act-11.html",
+   "category": "Bangladesh justice data source",
+   "relevance": "OFFICIAL full text of every Bangladesh act incl. Penal Code 1860 — our statute corpus source (fetched verbatim)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Bangladesh Penal Code 1860 (Act XLV of 1860)",
+   "url": "http://bdlaws.minlaw.gov.bd/act-11/section-3250.html",
+   "category": "Bangladesh justice data source",
+   "relevance": "Per-section official pages — e.g., §392 robbery punishment verbatim",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "eCourt Bangladesh",
+   "url": "https://ecourt.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Official e-court portal — case status/cause lists (JS-rendered; browser-read pipeline built)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Supreme Court of Bangladesh",
+   "url": "https://www.supremecourt.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Judgments, orders, cause lists — official source",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "CLCBD — Chancery Law Chronicles",
+   "url": "http://www.clcbd.org/",
+   "category": "Statute / case-law database",
+   "relevance": "~7,200+ Bangladesh Supreme Court judgments (first BD case-law database)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "BDLex",
+   "url": "https://www.bdlex.com/",
+   "category": "Statute / case-law database",
+   "relevance": "Bangladesh legal database and search platform",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Bangladesh Code (Ministry of Law volumes)",
+   "url": "http://bdlaws.minlaw.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "All acts of Bangladesh — beyond the Penal Code",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Judicial Monitoring Dashboard (BD)",
+   "url": "https://dashboard.judiciary.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Court-level judicial monitoring statistics",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "UN SDG 16 (justice) indicators",
+   "url": "https://unstats.un.org/sdgs/",
+   "category": "Global justice statistics",
+   "relevance": "SDG 16.3 justice-access indicators — impact framing",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "World Justice Project Rule of Law Index",
+   "url": "https://worldjusticeproject.org/rule-of-law-index",
+   "category": "Global justice statistics",
+   "relevance": "Bangladesh rule-of-law scores — context for problem statement",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "UNODC crime & criminal justice statistics",
+   "url": "https://dataunodc.un.org/",
+   "category": "Global justice statistics",
+   "relevance": "Cross-country justice statistics",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "ICC Legal certainty index",
+   "url": "https://iccwbo.org/",
+   "category": "Global justice statistics",
+   "relevance": "Legal-certainty measurement reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Pathfinders Justice for All (Task Team)",
+   "url": "https://www.justiceforall2030.org/",
+   "category": "Global justice statistics",
+   "relevance": "Global access-to-justice movement data",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "HiiL Justice Needs surveys",
+   "url": "https://www.hiil.org/",
+   "category": "Global justice statistics",
+   "relevance": "Justice-needs methodology (citizen-side data)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Open Justice data (UK MOJ)",
+   "url": "https://www.gov.uk/government/organisations/ministry-of-justice",
+   "category": "Global justice statistics",
+   "relevance": "Open justice-statistics exemplar (design reference)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "ProPublica COMPAS analysis dataset",
+   "url": "https://github.com/propublica/compas-analysis",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "The canonical algorithmic-bias dataset — our fairness section cites it",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "NIST AI Risk Management Framework",
+   "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Governance framework — our audit-trail design reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "EU HLEG Ethics Guidelines for Trustworthy AI",
+   "url": "https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Trustworthy-AI requirements mapping",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Fairlearn toolkit",
+   "url": "https://fairlearn.org/",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Fairness-measurement toolkit reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Aequitas bias audit",
+   "url": "http://aequitas.dssg.io/",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Bias-audit tool reference for classifier fairness reporting",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "HuggingFace Bangla NLP datasets",
+   "url": "https://huggingface.co/datasets?search=bengali",
+   "category": "Bangla NLP corpus",
+   "relevance": "Bangla corpora hub for voice/text intake training",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Google FLEURS — Bangla (bn_bd)",
+   "url": "https://huggingface.co/datasets/google/fleurs",
+   "category": "Bangla NLP corpus",
+   "relevance": "Bangla speech dataset — voice-intake ASR training reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Mozilla Common Voice — Bengali",
+   "url": "https://commonvoice.mozilla.org/bn/",
+   "category": "Bangla NLP corpus",
+   "relevance": "Crowdsourced Bangla speech",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "OSCAR — Bengali corpus",
+   "url": "https://oscar-project.org/",
+   "category": "Bangla NLP corpus",
+   "relevance": "Large Bangla text corpus",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "BNLP (Bengali NLP toolkit)",
+   "url": "https://github.com/sagorbrur/bnlp",
+   "category": "Bangla NLP corpus",
+   "relevance": "Bangla tokenization tooling",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Bengali AI datasets (Kaggle)",
+   "url": "https://www.kaggle.com/c/bengaliai-cv19",
+   "category": "Bangla NLP corpus",
+   "relevance": "Bangla handwriting OCR reference (scanned judgments)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Tesseract ben traineddata",
+   "url": "https://github.com/tesseract-ocr/tessdata_best",
+   "category": "Bangla NLP corpus",
+   "relevance": "Bengali OCR model we use for scanned documents",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Supreme Court Online Bulletin (SCOB)",
+   "url": "https://www.supremecourt.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Official online law report of SC judgments",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Bangladesh Gazette (extra-ordinary)",
+   "url": "http://bdlaws.minlaw.gov.bd/gazettes",
+   "category": "Bangladesh justice data source",
+   "relevance": "Official gazette notifications",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Law & Parliament Affairs library acts (English)",
+   "url": "http://bdlaws.minlaw.gov.bd/laws-of-bangladesh-alphabetical.html",
+   "category": "Bangladesh justice data source",
+   "relevance": "Alphabetical act index — corpus expansion",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Police Clearance / case documents (DSS)",
+   "url": "https://www.dsscms.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Department of Social Services case-management platform (comparator)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Transparency International BD — justice chapter",
+   "url": "https://www.ti-bangladesh.org/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Corruption/justice perception reports (problem framing)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "BLAST — Bangladesh Legal Aid and Services Trust",
+   "url": "https://www.blast.org.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Leading legal-aid NGO — case-type distribution context",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "ASK — Ain o Salish Kendra",
+   "url": "https://www.askbd.org/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Legal-rights NGO publications",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Bangladesh Justice Audit (justiceaudit.org)",
+   "url": "https://bangladesh.justiceaudit.org/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Comprehensive justice-sector audit data (SC annual reports, caseload)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Supreme Court Annual Report 2016 (PDF)",
+   "url": "https://bangladesh.justiceaudit.org/wp-content/uploads/2018/07/Supreme-Court-Annual-Report-2016.pdf",
+   "category": "Bangladesh justice data source",
+   "relevance": "Detailed SC caseload statistics — historical series",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Global Legal Tech Hub listings (BD legaltech scan)",
+   "url": "https://www.legalcomplex.com/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Legaltech landscape scan (competitor analysis)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Caselaw Access Project (Harvard)",
+   "url": "https://case.law/",
+   "category": "Statute / case-law database",
+   "relevance": "6.7M US cases, fully open — corpus-scale reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "India Code",
+   "url": "https://www.indiacode.nic.in/",
+   "category": "Statute / case-law database",
+   "relevance": "Comparator statute database (South Asia)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Singapore Judiciary eLitigation",
+   "url": "https://www.elitigation.sg/",
+   "category": "Statute / case-law database",
+   "relevance": "Advanced e-court reference implementation",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "UK Find Case Law (BAILII successor)",
+   "url": "https://caselaw.nationalarchives.gov.uk/",
+   "category": "Statute / case-law database",
+   "relevance": "Open UK case-law with official citation",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "BAILII",
+   "url": "http://www.bailii.org/",
+   "category": "Statute / case-law database",
+   "relevance": "British & Irish legal information (long-running open law)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "LexisNexis Legal+ (industry scan)",
+   "url": "https://www.lexisnexis.com/",
+   "category": "Statute / case-law database",
+   "relevance": "Commercial legal-AI landscape (competitor context)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Harvard Library Innovation Lab — Caselaw API",
+   "url": "https://api.case.law/v1/",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Open API design reference for case-law",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "JURIX — Legal knowledge & information systems",
+   "url": "https://www.jurix.nl/",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Academic community for legal AI (papers)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "ICAIL — International Conference on AI & Law",
+   "url": "https://www.iaail.org/",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Primary venue for legal-AI papers (harvest source)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Justice Tech Association",
+   "url": "https://justicetechassociation.org/",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Justice-tech community (citizen-side tools)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "ProPublica Nonprofit journalism datasets",
+   "url": "https://www.propublica.org/datastore/",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Open datasets incl. criminal justice",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Stanford HAI — AI Index (law chapter)",
+   "url": "https://aiindex.stanford.edu/",
+   "category": "Global justice statistics",
+   "relevance": "AI-index governance/law metrics",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "OECD AI Policy Observatory",
+   "url": "https://oecd.ai/",
+   "category": "Global justice statistics",
+   "relevance": "National AI-policy tracker incl. justice",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "GOV.UK Algorithmic Transparency Standard",
+   "url": "https://www.gov.uk/government/publications/algorithmic-transparency-template",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Algorithm-transparency template — our Model Card follows it",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Canada Directive on Automated Decision-Making",
+   "url": "https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Government ADM directive — public-sector AI governance reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "World Bank — Justice for All global report",
+   "url": "https://www.worldbank.org/",
+   "category": "Global justice statistics",
+   "relevance": "Global justice-gap quantification (2B people)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Task Force on Justice reports",
+   "url": "https://www.justiceforall2030.org/",
+   "category": "Global justice statistics",
+   "relevance": "Justice-gap measurement methodology",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Bangladesh e-Government CIRT (security context)",
+   "url": "https://www.cirt.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Security-compliance context for court data",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "a2i — Aspire to Innovate (BD digital)",
+   "url": "https://a2i.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "BD digital-government innovation partner context",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Chalkidis et al. — Legal BERT",
+   "url": "https://arxiv.org/abs/1910.10583",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Domain-adapted BERT for legal text (method reference)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Zhong et al. — Legal judgment prediction (Chinese AI challenge)",
+   "url": "https://arxiv.org/abs/1906.02049",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "LJP task formulation reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Chalkidis et al. — Multilingual legal topic classification",
+   "url": "https://arxiv.org/abs/2006.03229",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Multilingual legal classification method",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Sulea et al. — Sentencing prediction",
+   "url": "https://arxiv.org/abs/1708.01705",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Sentence-length prediction method reference",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Katz et al. — US Supreme Court prediction",
+   "url": "https://arxiv.org/abs/1407.6333",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Early LJP (random-forest on SCOTUS)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Aletras et al. — ECHR prediction",
+   "url": "https://arxiv.org/abs/1508.03533",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "ECHR topic-model prediction (Lancet-style disclosure)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Devlin et al. — BERT",
+   "url": "https://arxiv.org/abs/1810.04805",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Backbone architecture family (future upgrade path)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "Robertson & Zaragoza — BM25",
+   "url": "https://link.springer.com/book/10.1007/978-1-4939-6895-1_2",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Retrieval scoring function (our precedent search)",
+   "http_check": "200",
+   "verified": true
+  },
+  {
+   "name": "LEXGLUE",
+   "url": "https://huggingface.co/datasets/lex_glue",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Benchmark for legal NLP (case entailment, topics) — our eval design follows it",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "EURLEX57K",
+   "url": "https://huggingface.co/datasets/eurlex57k",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "57k EU laws with topic labels — multi-label statute classification reference",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "ILDC (Indian Legal Documents)",
+   "url": "https://github.com/Law-AI/ILDC",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Court judgment outcome prediction ( explainable) — closest analog to our courts",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "BillSum",
+   "url": "https://huggingface.co/datasets/billsum",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Legislative summarization",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "LEDGAR",
+   "url": "https://huggingface.co/datasets/lex_glue",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Provision classification in contracts",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "ECtHR (Chalkidis)",
+   "url": "https://huggingface.co/datasets/lex_glue",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "European Court of Human Rights case classification",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "Contract-NLI",
+   "url": "https://huggingface.co/datasets/contract-nli",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "NLI over non-disclosure agreements",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "Legal entailment BANK (FEVER-style)",
+   "url": "https://github.com/coastalcph/lex_glue",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Entailment method design for statute-to-facts checking",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "Swiss judgment prediction",
+   "url": "https://huggingface.co/datasets/rclements/swiss_judgment_prediction",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "Judgment prediction with fairness analysis",
+   "http_check": "401",
+   "verified": false
+  },
+  {
+   "name": "German legal evaluation set (LegoNets)",
+   "url": "https://github.com/Blue-Beetle/LegalBench",
+   "category": "Legal NLP benchmark dataset",
+   "relevance": "EU/German legal reasoning tasks",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "Bangladesh Judiciary Portal",
+   "url": "https://judiciary.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Judicial Monitoring Dashboard, CMS, Lawyer's Portal, Judipay",
+   "http_check": "ERR:The read operation timed out",
+   "verified": false
+  },
+  {
+   "name": "LII of India — Bangladesh SC judgments",
+   "url": "http://www.liiofindia.org/bd/cases/bd/",
+   "category": "Statute / case-law database",
+   "relevance": "~34,110 Bangladesh Supreme Court judgments 1950–2016",
+   "http_check": "403",
+   "verified": false
+  },
+  {
+   "name": "Law &Justice Division, BD Ministry",
+   "url": "https://mola.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Policy/annual reports on justice administration",
+   "http_check": "ERR:<urlopen error [Errno 11001] g",
+   "verified": false
+  },
+  {
+   "name": "District Judiciary portal network (judiciary.gov.bd districts)",
+   "url": "https://narsingdi.judiciary.gov.bd/en",
+   "category": "Bangladesh justice data source",
+   "relevance": "Example district court portal — 64-district pattern for cause lists",
+   "http_check": "ERR:The read operation timed out",
+   "verified": false
+  },
+  {
+   "name": "Legal Aid Services (NLASO), Bangladesh",
+   "url": "http://nlaso.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "National Legal Aid Services — citizen-facing justice info partner source",
+   "http_check": "ERR:<urlopen error [SSL: CERTIFICA",
+   "verified": false
+  },
+  {
+   "name": "Bangladesh Law Commission reports",
+   "url": "http://www.lawcommissionbd.org/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Reform reports incl. procedural simplification",
+   "http_check": "ERR:<urlopen error [Errno 11001] g",
+   "verified": false
+  },
+  {
+   "name": "Judipay (court fees, BD)",
+   "url": "https://judipay.judiciary.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Online court-fee payment — integration surface",
+   "http_check": "ERR:The read operation timed out",
+   "verified": false
+  },
+  {
+   "name": "CEPEJ European judicial systems report data",
+   "url": "https://www.coe.int/en/web/cepej",
+   "category": "Global justice statistics",
+   "relevance": "Judicial-efficiency benchmarks (comparator studies)",
+   "http_check": "403",
+   "verified": false
+  },
+  {
+   "name": "World Bank Worldwide Governance Indicators",
+   "url": "https://info.worldbank.org/governance/wgi/",
+   "category": "Global justice statistics",
+   "relevance": "Rule-of-law percentile series for Bangladesh",
+   "http_check": "ERR:<urlopen error [Errno 11001] g",
+   "verified": false
+  },
+  {
+   "name": "US Courts statistics (comparator)",
+   "url": "https://www.uscourts.gov/statistics",
+   "category": "Global justice statistics",
+   "relevance": "Caseload statistics methodology reference",
+   "http_check": "503",
+   "verified": false
+  },
+  {
+   "name": "COMPAS practice tool documentation",
+   "url": "https://www.equivant.com/",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Commercial risk-tool documentation — ethics comparison",
+   "http_check": "403",
+   "verified": false
+  },
+  {
+   "name": "Montreal Declaration for Responsible AI",
+   "url": "https://montrealdeclaration.responsibleai.com/",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "Responsible-AI principles reference",
+   "http_check": "ERR:<urlopen error [WinError 10060",
+   "verified": false
+  },
+  {
+   "name": "Council of Europe — AI and justice",
+   "url": "https://www.coe.int/en/web/cepej/ai-and-judicial-systems",
+   "category": "Sentencing / fairness dataset",
+   "relevance": "CEPEJ European Ethical Charter on AI in judicial systems — direct guidance",
+   "http_check": "403",
+   "verified": false
+  },
+  {
+   "name": "BLTK / Bangla Language Toolkit corpora",
+   "url": "https://github.com/abrar2662/BLTK",
+   "category": "Bangla NLP corpus",
+   "relevance": "Bangla corpus toolkit",
+   "http_check": "404",
+   "verified": false
+  },
+  {
+   "name": "Bangladesh Bar Council",
+   "url": "http://www.barcouncil.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Advocate enrolment/rules — lawyer-layer context",
+   "http_check": "403",
+   "verified": false
+  },
+  {
+   "name": "National Legal Aid FAQ (judiciary portal)",
+   "url": "https://judiciary.gov.bd/en/faq",
+   "category": "Bangladesh justice data source",
+   "relevance": "Citizen-facing justice FAQ corpus (plain-Bangla explainer source)",
+   "http_check": "ERR:The read operation timed out",
+   "verified": false
+  },
+  {
+   "name": "Bangladesh Parliament (acts passed)",
+   "url": "http://www.parliament.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "New acts feed for corpus updates",
+   "http_check": "ERR:<urlopen error [WinError 10060",
+   "verified": false
+  },
+  {
+   "name": "Madaripur Legal Aid Association",
+   "url": "https://mlaa.org.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "Longest-running BD legal-aid NGO (citizen needs)",
+   "http_check": "ERR:<urlopen error [Errno 11001] g",
+   "verified": false
+  },
+  {
+   "name": "Bangladesh Computer Council — national AI guidelines",
+   "url": "https://bcc.gov.bd/",
+   "category": "Bangladesh justice data source",
+   "relevance": "National AI policy context",
+   "http_check": "ERR:<urlopen error [SSL: CERTIFICA",
+   "verified": false
+  },
+  {
+   "name": "CourtListener / RECAP (Free Law Project)",
+   "url": "https://www.courtlistener.com/",
+   "category": "Statute / case-law database",
+   "relevance": "US open case-law + RECAP archive — largest open court corpus (architecture reference)",
+   "http_check": "403",
+   "verified": false
+  },
+  {
+   "name": "EUR-Lex",
+   "url": "https://eur-lex.europa.eu/",
+   "category": "Statute / case-law database",
+   "relevance": "EU law corpus — multilingual statute access",
+   "http_check": "403",
+   "verified": false
+  }
+ ]
+}

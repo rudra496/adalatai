@@ -1,0 +1,11 @@
+{
+  "name": "adalatai",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "vitest run --root .. tests"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.0"
+  }
+}

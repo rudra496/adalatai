@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>আইন ব্রাউজার — AdalatAI</title>
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="icon" href="assets/icons/icon-192.png">
+</head>
+<body>
+<div id="shell">
+<main>
+  <h1 data-i18n="law_title">আইন ব্রাউজার — দণ্ডবিধি ১৮৬০</h1>
+  <p class="small" data-i18n="source_note">উৎস: bdlaws.minlaw.gov.bd (মন্ত্রণালয়ের অফিসিয়াল ডাটাবেস) — হুবহু টেক্সট, কোনো প্যারাফ্রেজ নয়</p>
+  <input type="text" id="q" data-i18n-ph="" placeholder="ধারা/শিরোনাম/টেক্সট খুঁজুন — e.g. 379 / theft / robbery">
+  <div id="results" style="margin-top:0.8rem"></div>
+</main>
+</div>
+<script type="module">
+import { initShell, el } from "./assets/js/app.js";
+import { loadStatutes } from "./assets/js/court.js";
+
+initShell("law");
+const pc = await loadStatutes();
+const byId = {};
+for (const s of pc.sections) byId[s.number] = s;
+
+function search(q) {
+  q = q.trim().toLowerCase();
+  if (!q) return [];
+  if (byId[q]) return [byId[q]];
+  return pc.sections.filter((s) =>
+    s.number.includes(q) || s.title.toLowerCase().includes(q) || s.text.toLowerCase().includes(q)).slice(0, 12);
+}
+function render(list) {
+  el("results").innerHTML = list.map((s) => `
+    <div class="card"><b>ধারা ${s.number} — ${s.title}</b>
+      <p class="small"><i>"${s.text}"</i></p>
+      <a class="small" href="${s.url}" target="_blank" rel="noopener">${s.url}</a>
+    </div>`).join("") || `<p class="small">—</p>`;
+}
+el("q").oninput = () => render(search(el("q").value));
+// initial view: famous sections
+render(search("302").concat(search("theft")).slice(0, 4));
+</script>
+</body>
+</html>
