@@ -1,10 +1,10 @@
 // AdalatAI service worker — offline-first, network-first for same-origin (fresh deploys).
-const CACHE = "adalatai-v1";
+const CACHE = "adalatai-v2";
 const ASSETS = ["./", "./index.html", "./intake.html", "./judge.html", "./draft.html",
   "./law.html", "./analytics.html", "./audit.html",
   "./assets/css/app.css", "./assets/js/app.js", "./assets/js/court.js",
   "./assets/js/i18n.js", "./assets/js/store.js", "./assets/js/voice.js",
-  "./manifest.webmanifest", "./data/case_model.json", "./data/penal_code_full.json"];
+  "./manifest.webmanifest", "./data/case_model.json", "./data/penal_code_full.json", "./data/case_sections.json", "./data/bn_explanations.json"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
 });

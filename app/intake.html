@@ -35,7 +35,14 @@ initShell("intake");
 const lang = settings.lang || "bn";
 
 const EXAMPLES = [
-  { bn: "রাতের বেলা রফিকের দোকান ভেঙে টিভি ও কম্পিউটার চুরি হয়েছে। পরে করিমকে ছুরি মেরে আহত করেছে এবং জোর করে তার চেইন ছিনতাই করেছে।", en: "Someone broke into Rafiq's shop at night and committed theft of the TV and computer. Later they stabbed Karim causing hurt, and committed robbery by snatching his gold chain.", label: "theft+hurt+robbery" },
+  { bn: "রাতের বেলা রফিকের দোকান ভেঙে টিভি ও কম্পিউটার চুরি হয়েছে। পরে করিমকে ছুরি মেরে আহত করেছে এবং জোর করে তার চেইন ছিনতাই করেছে।", ro: "rate rafiquer dokan bhenge TV o computer churi hoyeche. pore Karim ke chhuri mere ahoto koreche ar jore kore tar chain chintai koreche.", en: "Someone broke into Rafiq's shop at night and committed theft of the TV and computer. Later they stabbed Karim causing hurt, and committed robbery by snatching his gold chain.", label: "theft+hurt+robbery" },
+  { bn: "প্রতিদিন কলেজ পথে ছাত্রীকে অশ্লীল ইশারা করে ইভটিজিং করে", ro: "protidin college pothe chhatritoke oshlil ishara kore evtijging kore", en: "Passing indecent remarks to college girls every day — eve teasing", label: "eve_teasing" },
+  { bn: "স্ত্রীকে যৌতুকের জন্য মারধর করেছে", ro: "strike joutuker jonno mar-dhor koreche", en: "Assaulted his wife demanding dowry", label: "dowry" },
+  { bn: "ধর্ষণের অভিযোগ উঠেছে", ro: "dhorshoner abhiyog utheche", en: "A rape complaint has been raised", label: "rape" },
+  { bn: "ব্যাংকের চেক ডিশনার হয়ে গেছে", ro: "banker chek dishonour hoye geche", en: "The bank cheque was dishonoured — §138 NI Act", label: "cheque_bounce" },
+  { bn: "অনলাইনে ভুয়া আইডি খুলে টাকা প্রতারণা করেছে", ro: "online e bhua ID khule taka protarona koreche", en: "Online fraud using a fake ID", label: "cyber_fraud" },
+  { bn: "ইয়াবা বিক্রি করতে গিয়ে ধরা পড়েছে", ro: "yaba bikri korte giye dhora poreche", en: "Caught selling yaba — narcotics", label: "narcotics" },
+  { bn: "সরকারি কাজে ঘুষ দাবি করেছে", ro: "sharkari kaje ghush dabi koreche", en: "Demanded a bribe for government work — corruption", label: "corruption_bribery" },
   { bn: "পাঁচ জনের গ্যাং অস্ত্র নিয়ে বাড়ি লুট করেছে", en: "A gang of five armed men committed dacoity at the house", label: "dacoity" },
   { bn: "ভুয়া চাকরির প্রতিশ্রুতি দিয়ে ২ লাখ টাকা নিয়ে পালিয়েছে", en: "Took 200,000 taka with a false job promise and disappeared — cheating", label: "cheating" },
   { bn: "কোম্পানির হিসাব থেকে টাকা আত্মসাৎ করেছে", en: "The manager misappropriated company funds — breach of trust", label: "breach_of_trust" },
@@ -47,11 +54,17 @@ const EXAMPLES = [
 const chipBox = el("exampleChips");
 EXAMPLES.forEach((ex, i) => {
   const b = document.createElement("button");
-  b.className = "secondary"; b.style.margin = "0.15rem";
+  b.className = "secondary"; b.style.margin = "0.15rem 0.3rem 0.15rem 0";
   b.textContent = (lang === "bn" ? "উদা: " : "Ex: ") + (i + 1) + " · " + ex.label;
-  b.onclick = () => { el("facts").value = lang === "bn" ? ex.bn : ex.en; };
+  b.onclick = () => { el("facts").value = (lang === "bn" ? ex.bn : lang === "ro" ? ex.ro : ex.en) || ex.en; };
   chipBox.appendChild(b);
 });
+// Banglish quick-select (romanized input is a first-class citizen)
+const roBtn = document.createElement("button");
+roBtn.className = "secondary";
+roBtn.textContent = lang === "bn" ? "⌨ বাংলিশ: ami ekti mamla korte chai" : "⌨ Banglish: ami ekti mamla korte chai";
+roBtn.onclick = () => { el("facts").value = "ami ekti mamla korte chai — dokan theke mobile churi hoyeche"; };
+chipBox.appendChild(roBtn);
 
 // voice intake (progressive enhancement; tap input always works)
 let rec = null;
@@ -86,7 +99,7 @@ el("analyzeBtn").onclick = async () => {
   };
   el("analysis").innerHTML = `
     <div class="card"><b>${t("ai_types", lang)}</b>
-      <div class="chips">${a.types.map(([ty, sc]) => `<span class="chip">${t("labels", lang) ? (lang === "bn" ? ({ theft: "চুরি", robbery: "ডাকাতি", dacoity: "দলবদ্ধ ডাকাতি", murder: "খুন", culpable_homicide: "অনিচ্ছাকৃত হত্যা", hurt: "আঘাত", assault: "মারপিট", kidnapping: "অপহরণ", wrongful_confinement: "অবৈধ আটক", cheating: "প্রতারণা", breach_of_trust: "আস্থাভাজন", mischief: "সম্পত্তি ক্ষতি", trespass: "অনধিকার প্রবেশ", defamation: "মানহানি", criminal_intimidation: "ভয় প্রদর্শন", rape: "ধর্ষণ" }[ty] || ty) : ty) : ty} · ${sc}</span>`).join("") || "—"}</div></div>
+      <div class="chips">${a.types.map(([ty, sc]) => `<span class="chip">${(t("labels", lang)[ty] || ty)} · ${sc}</span>`).join("") || "—"}</div></div>
     <div class="card"><b>${t("ai_sections", lang)}</b>
       ${a.sections.map((s) => `<div class="note"><b>${lang === "bn" ? "ধারা" : "Section"} ${s.number} — ${s.title}</b><br>
         <span class="small">${t("quote", lang)}:</span> <i>"${s.text}"</i><br>
@@ -96,7 +109,22 @@ el("analyzeBtn").onclick = async () => {
     </div>
     <div class="card"><b>${t("ai_evidence", lang)}</b>
       <ul style="margin:0.3rem 0 0 1.1rem">${a.evidence.map((e) => `<li class="small">${e}</li>`).join("")}</ul>
+      <div class="card"><b>${lang === "bn" ? "বাস্তব প্রিসিডেন্ট (প্রকৃত হাইকোর্ট রায় — নমুনা ব্যাচ)" : "Real precedents (actual High Court judgments — sample batch)"}</b>
+      <div id="precedents" class="small">…</div></div>
       <br><button id="sendJudge">${t("save_case", lang)}</button></div>`;
+  // real-precedent search (BM25-lite over real SC judgment excerpts)
+  fetch("data/precedents_real.json").then((r) => r.json()).then((P) => {
+    const qTokens = new Set(facts.toLowerCase().match(/[\wঀ-৿]+/g) || []);
+    const scored = P.precedents.map((p) => {
+      const toks = (p.excerpt.toLowerCase().match(/[\wঀ-৿]+/g) || []);
+      let hits = 0;
+      for (const t of qTokens) if (t.length > 3 && toks.includes(t)) hits++;
+      return { p, hits };
+    }).sort((a, b) => b.hits - a.hits).slice(0, 3);
+    el("precedents").innerHTML = scored.filter((x) => x.hits > 0).map((x) =>
+      `<div class="note small">⚖ ${x.p.title}<br><a href="${x.p.url}" target="_blank" rel="noopener">${lang === "bn" ? "সূত্র (PDF)" : "Source (PDF)"}</a> · ${x.p.pages} ${lang === "bn" ? "পৃষ্ঠা" : "pages"}</div>`).join("")
+      || `<span class="small">— ${lang === "bn" ? "ওভারল্যাপিং প্রিসিডেন্ট নেই" : "no overlapping precedents"}</span>`;
+  }).catch(() => {});
   el("sendJudge").onclick = async () => {
     const caseNo = "CC-" + new Date().toISOString().slice(0, 10).replace(/-/g, "") + "-" + Math.floor(Math.random() * 900 + 100);
     await add("cases", { caseNo, facts, analysis: a, status: "PENDING_JUDGE", createdAt: new Date().toISOString() });

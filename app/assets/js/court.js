@@ -87,8 +87,46 @@ export function punishmentOf(text) {
   return out;
 }
 
-/** Full AI pre-analysis for a case narrative. */
+/** Full AI pre-analysis. v2 (TF-IDF trained, 30 types, trilingual) first; v1 fallback. */
 export async function analyzeCase(text) {
+  let v2 = null;
+  try { v2 = await (await fetch("data/case_model.json")).json(); } catch {}
+  if (v2 && v2.config && v2.config.analyzer) {
+    const nlp2 = await import("./nlp2.js");
+    const statutes = await loadStatutes();
+    if (!INDEX) buildIndex(statutes);
+    const byNum = {};
+    for (const s of statutes.sections) byNum[s.number] = s;
+    let secMap = {};
+    try {
+      const cs = await (await fetch("data/case_sections.json")).json();
+      secMap = cs.mapping || {};
+    } catch {}
+    const preds = nlp2.classifyV2(v2, text);
+    const types = preds.map((p) => [p.type, p.score]);
+    const outSecs = [];
+    const seen = new Set();
+    for (const [ct] of types) {
+      for (const s of secMap[ct] || []) {
+        if (!seen.has(s.act + s.number)) {
+          seen.add(s.act + s.number);
+          outSecs.push({ number: s.number, title: s.title, text: s.text, url: s.url,
+                         punishment: punishmentOf(s.text), act: s.act });
+        }
+      }
+    }
+    for (const [n] of bm25Search(text, 4)) {
+      if (!seen.has("PC" + n) && byNum[n]) {
+        seen.add("PC" + n);
+        outSecs.push({ number: n, title: byNum[n].title, text: byNum[n].text, url: byNum[n].url,
+                       punishment: punishmentOf(byNum[n].text), act: "PC" });
+      }
+    }
+    return { types, sections: outSecs.slice(0, 7),
+             evidence: evidenceChecklist(types.map(([t]) => t)),
+             modelVersion: "case_model-v2 (TF-IDF+NB, " + (v2.metrics?.total_corpus || "1.1M") + " sentences)" };
+  }
+  // ---------- v1 fallback ----------
   const model = await loadCaseModel();
   const statutes = await loadStatutes();
   if (!INDEX) buildIndex(statutes);
