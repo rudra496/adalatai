@@ -40,8 +40,8 @@ test_texts  = [texts[i] for i in test_idx];  test_y  = [labels_set[i] for i in t
 
 # ---- TF-IDF char_wb 2-3 grams (Cython-vectorised: handles Bangla+Banglish+English) ----
 print("vectorising (TF-IDF char_wb 2-3)…")
-vec = TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 3), min_df=4,
-                      max_features=250_000, sublinear_tf=True)
+vec = TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 3), min_df=5,
+                      max_features=150_000, sublinear_tf=True)
 Xtr = vec.fit_transform(train_texts)
 Xte = vec.transform(test_texts)
 print(f"features: {Xtr.shape[1]:,} · {time.time()-t0:.0f}s")
