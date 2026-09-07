@@ -202,7 +202,9 @@ export async function analyzeCase(text) {
     }
     const outSecs = [];
     const seen = new Set();
-    for (const [ct] of types) {
+    // Only pull sections from the TOP 2 types (noise reduction)
+    const topTypes = types.slice(0, 2).map(([t]) => t);
+    for (const ct of topTypes) {
       for (const s of secMap[ct] || []) {
         if (!seen.has(s.act + s.number)) {
           seen.add(s.act + s.number);

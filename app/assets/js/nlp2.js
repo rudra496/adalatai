@@ -93,7 +93,7 @@ export function classifyV2(model, text) {
   // eliminates cross-class noise — a theft case won't show kidnapping
   const topScore = raw.length > 0 ? raw[0].score : 0;
   const cutoff = topScore * 0.25;
-  return raw.filter((x) => x.score >= cutoff).slice(0, 6)
+  return raw.filter((x) => x.score >= cutoff).slice(0, 3)
     .map((x) => ({ type: x.type, score: Math.round(x.score * 100) / 100 }));
 }
 
