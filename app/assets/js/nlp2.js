@@ -74,17 +74,19 @@ export function bucket(ngram, nFeatures) {
 export function classifyV2(model, text) {
   const nFeatures = model.config.n_features;
   const thr = model.config.thresholds || {};
+  const MIN_MATCH = model.config.min_match || 2;
   const grams = [...new Set(charWbNgrams(text))];
   const out = [];
   for (const [cls, obj] of Object.entries(model.classes)) {
-    let s = obj.intercept || 0;
+    let s = 0, cnt = 0;
     for (const g of grams) {
       const b = bucket(g, nFeatures);
       const w = obj.weights[String(b)];
-      if (w !== undefined) s += w;
+      if (w !== undefined && w > 0) { s += w; cnt++; }
     }
-    const t = (model.config.thresholds || {})[cls] ?? obj.threshold ?? 0.5;
-    if (s > t) out.push({ type: cls, score: Math.round(s * 100) / 100 });
+    const mean = cnt >= MIN_MATCH ? s / cnt : 0;
+    const t = (model.config.thresholds || {})[cls] ?? 0.5;
+    if (mean > t) out.push({ type: cls, score: Math.round(mean * 100) / 100 });
   }
   return out.sort((a, b) => b.score - a.score);
 }
