@@ -83,7 +83,7 @@ export function classifyV2(model, text) {
       const w = obj.weights[String(b)];
       if (w !== undefined) s += w;
     }
-    const t = thr[cls] ?? 0.5;
+    const t = (model.config.thresholds || {})[cls] ?? obj.threshold ?? 0.5;
     if (s > t) out.push({ type: cls, score: Math.round(s * 100) / 100 });
   }
   return out.sort((a, b) => b.score - a.score);
