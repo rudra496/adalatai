@@ -34,6 +34,8 @@ add_type("murder", "খুন/হত্যা", "murder", ["300","302","201","20
  {"bn":"{name}-কে ছুরি মেরে হত্যা করেছে, মৃতদেহ উদ্ধার হয়েছে","ro":"{name} ke chhuri mere hotya koreche, mrittodo uddhar hoyeche","en":"{name} was stabbed to death — murder; the body was recovered"},
  {"bn":"পিস্তল দিয়ে গুলি করে {name}-এর মৃত্যু ঘটানো হয়েছে","ro":"pistol diye guli kore {name} er mrityu ghatano hoyeche","en":"{name} was shot with a pistol and died — murder"},
  {"bn":"ঝগড়ার জেরে লাঠি দিয়ে পিটিয়ে হত্যা করেছে","ro":"jhograr jere lathi diye pitiye hotya koreche","en":"Beaten to death with sticks after an altercation — murder"},
+ {"bn":"{name}-কে খুন করেছে","ro":"{name} ke khun koreche","en":"{name} was murdered"},
+ {"bn":"খুন হয়ে পড়ে আছে রাস্তায়","ro":"khun hoye pore ache rastay","en":"Found murdered on the street"},
 ])
 add_type("culpable_homicide", "অনিচ্ছাকৃত হত্যা", "culpable homicide", ["299","304"], [
  {"bn":"মারপিটে {name}-এর মৃত্যু হয়েছে, খুনের উদ্দেশ্য ছিল না","ro":"marpite {name} er mrityu hoyeche, khuner uddhyesho chhilo na","en":"{name} died from the assault — culpable homicide not amounting to murder"},
@@ -105,11 +107,14 @@ add_type("dowry", "যৌতুক", "dowry", ["3","4"], [
 add_type("cheque_bounce", "চেক ডিশনার", "cheque dishonour", ["138"], [
  {"bn":"মাননীয় চেক এনক্যাশ হয়েছে, টাকা নেই","ro":"manny chek encash hoyeche, taka nei","en":"The cheque was dishonoured for insufficient funds — §138 NI Act"},
  {"bn":"ব্যবসার বকেয়ার চেক ডিশনার হয়েছে","ro":"boshar bokyar chek dishonour hoyeche","en":"A business-payment cheque bounced"},
+ {"bn":"চেক ডিশনার হওয়ায় মামলা","ro":"chek dishonour howay mamla","en":"Case for cheque dishonour"},
+ {"bn":"cheek dishonour hoyeche taka nei","ro":"cheek dishonour hoyeche taka nei","en":"Cheque dishonoured, no money in account"},
 ])
 add_type("cyber_fraud", "অনলাইন প্রতারণা", "cyber fraud", ["24"], [
  {"bn":"ফেসবুকে ভুয়া আইডি খুলে টাকা হাতিয়ে নিয়েছে","ro":"facebook e bhua ID khule taka hatiye niyeche","en":"Opened a fake Facebook ID and defrauded money online"},
  {"bn":"মোবাইলে ভুয়া বিকাশ মেসেজ পাঠিয়ে টাকা নিয়েছে","ro":"mobile o bhua bikash message pathiye taka niyeche","en":"Sent fake bKash messages and cheated money"},
  {"bn":"অনলাইন শপিংয়ে টাকা নিয়ে পণ্য পাঠায়নি","ro":"online shopping e taka niye ponnyo pathayni","en":"Online shopping fraud — took payment, never delivered"},
+ {"bn":"ভুয়া আইডি দিয়ে টাকা প্রতারণা করেছে","ro":"bhua ID diye taka protarona koreche","en":"Defrauded money using a fake ID"},
 ])
 add_type("cyber_defamation", "অনলাইন মানহানি", "online defamation", ["25","29"], [
  {"bn":"ডিজিটাল মাধ্যমে ভুয়া তথ্য ছড়িয়ে মানহানি করেছে","ro":"digital madhyome bhua tothyo chhariye manhani koreche","en":"Published false information online defaming {name}"},

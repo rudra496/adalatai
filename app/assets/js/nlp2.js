@@ -1,7 +1,7 @@
-// AdalatAI NLP v2 — TF-IDF(char_wb 2-3) + MultinomialNB inference in pure JS.
-// Replicates research/train_v2.py's Colab export (case_model.json):
-//   score = Σ_ngrams tfidf(ngram) × weight_class(ngram)  →  fire if > class threshold
-// tfidf(ngram) = (1 + ln(count)) × idf(ngram), then L2-normalised over the input vector.
+// AdalatAI NLP v3 — inference for the Colab-trained model (case_model.json).
+// Pipeline: char_wb(2,3) ngrams -> murmurhash3_32(utf8, seed=0) % 262144 -> binary
+// presence -> score(class) = Σ weights[class][bucket]; fire if score > threshold[class].
+// Hash parity verified against sklearn.utils.murmurhash3_32 (vitest).
 
 let MODEL2 = null;
 
@@ -11,7 +11,6 @@ export async function loadModel2() {
   return MODEL2;
 }
 
-/** Replicates TfidfVectorizer(analyzer="char_wb", ngram_range=(2,3), lowercase=True). */
 export function charWbNgrams(text, lo = 2, hi = 3) {
   const words = String(text || "").toLowerCase().replace(/[^\w\u0980-\u09FF]+/g, " ").split(/\s+/).filter(Boolean);
   const out = [];
@@ -22,32 +21,70 @@ export function charWbNgrams(text, lo = 2, hi = 3) {
     const nMax = Math.min(hi, L - 1);
     for (let n = lo; n <= nMax; n++)
       for (let i = 0; i + n <= L; i++) out.push(padded.substr(i, n));
-    if (L - 1 < lo) out.push(padded.trim());
   }
   return out;
 }
 
-/** @returns [{type, score}] — score is the calibrated decision value (higher = stronger) */
+// murmurhash3_32 (x86_32) over UTF-8 bytes — byte-exact match to
+// sklearn.utils.murmurhash3_32 (which uses the canonical murmur3_x86_32 algorithm)
+export function murmurhash3_32(key, seed = 0) {
+  const data = new TextEncoder().encode(key);
+  const len = data.length;
+  const c1 = 0xcc9e2d51, c2 = 0x1b873593;
+  let h1 = seed >>> 0;
+  const nblocks = Math.floor(len / 4);
+  const view = new DataView(data.buffer, data.byteOffset, data.byteLength);
+  for (let i = 0; i < nblocks; i++) {
+    let k1 = view.getUint32(i * 4, true);
+    k1 = Math.imul(k1, c1) >>> 0;
+    k1 = ((k1 << 15) | (k1 >>> 17)) >>> 0;
+    k1 = Math.imul(k1, c2) >>> 0;
+    h1 = (h1 ^ k1) >>> 0;
+    h1 = ((h1 << 13) | (h1 >>> 19)) >>> 0;
+    h1 = (Math.imul(h1, 5) + 0xe6546b64) >>> 0;
+  }
+  // tail: last (len & 3) bytes, XOR in ascending byte position shifts
+  let k1 = 0;
+  const tailStart = nblocks * 4;
+  const rem = len - tailStart;
+  if (rem >= 3) k1 ^= data[tailStart + 2] << 16;
+  if (rem >= 2) k1 ^= data[tailStart + 1] << 8;
+  if (rem >= 1) {
+    k1 ^= data[tailStart];
+    k1 = Math.imul(k1, c1) >>> 0;
+    k1 = ((k1 << 15) | (k1 >>> 17)) >>> 0;
+    k1 = Math.imul(k1, c2) >>> 0;
+    h1 = (h1 ^ k1) >>> 0;
+  }
+  h1 = (h1 ^ len) >>> 0;
+  h1 ^= h1 >>> 16;
+  h1 = Math.imul(h1, 0x85ebca6b) >>> 0;
+  h1 ^= h1 >>> 13;
+  h1 = Math.imul(h1, 0xc2b2ae35) >>> 0;
+  h1 ^= h1 >>> 16;
+  return h1 | 0;   // signed int32 like sklearn
+}
+
+export function bucket(ngram, nFeatures) {
+  const h = murmurhash3_32(ngram, 0);
+  return ((h % nFeatures) + nFeatures) % nFeatures;
+}
+
+/** @returns [{type, score}] */
 export function classifyV2(model, text) {
-  const grams = charWbNgrams(text);
-  const counts = {};
-  for (const g of grams) counts[g] = (counts[g] || 0) + 1;
-  const idf = model.idf;
+  const nFeatures = model.config.n_features;
   const thr = model.config.thresholds || {};
+  const grams = [...new Set(charWbNgrams(text))];
   const out = [];
   for (const [cls, obj] of Object.entries(model.classes)) {
-    let s = 0, norm = 0;
-    for (const [g, cnt] of Object.entries(counts)) {
-      const i = idf[g];
-      if (i === undefined) continue;
-      const tfidf = (1 + Math.log(cnt)) * i;
-      norm += tfidf * tfidf;
-      const w = obj.weights[g];
-      if (w !== undefined) s += tfidf * w;
+    let s = obj.intercept || 0;
+    for (const g of grams) {
+      const b = bucket(g, nFeatures);
+      const w = obj.weights[String(b)];
+      if (w !== undefined) s += w;
     }
-    norm = Math.sqrt(norm) || 1;
-    s /= norm;                                   // L2 — matches TfidfVectorizer norm
-    if (s > (obj.threshold ?? thr[cls] ?? 0.5)) out.push({ type: cls, score: Math.round(s * 100) / 100 });
+    const t = thr[cls] ?? 0.5;
+    if (s > t) out.push({ type: cls, score: Math.round(s * 100) / 100 });
   }
   return out.sort((a, b) => b.score - a.score);
 }

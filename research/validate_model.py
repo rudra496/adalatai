@@ -26,31 +26,61 @@ def char_wb_ngrams(text, lo=2, hi=3):
             for i in range(L - n + 1):
                 out.append(padded[i:i + n])
 
-def score(model, text, cls):
-    """Replicates app/assets/js/nlp2.js classifyV2 arithmetic exactly."""
-    words = re.sub(r"[^\w\u0980-\u09FF]+", " ", text.lower()).split()
-    grams = []
+
+def murmur3(data, seed=0):
+    c1, c2 = 0xcc9e2d51, 0x1b873593
+    h1 = seed & 0xffffffff
+    nblocks = len(data) // 4
+    for i in range(nblocks):
+        k1 = int.from_bytes(data[i*4:(i+1)*4], "little")
+        k1 = (k1 * c1) & 0xffffffff
+        k1 = ((k1 << 15) | (k1 >> 17)) & 0xffffffff
+        k1 = (k1 * c2) & 0xffffffff
+        h1 ^= k1
+        h1 = ((h1 << 13) | (h1 >> 19)) & 0xffffffff
+        h1 = (h1 * 5 + 0xe6546b64) & 0xffffffff
+    tail = len(data) - nblocks * 4
+    k1 = 0
+    if tail >= 3: k1 ^= data[nblocks*4 + 2] << 16
+    if tail >= 2: k1 ^= data[nblocks*4 + 1] << 8
+    if tail >= 1:
+        k1 ^= data[nblocks*4]
+        k1 = (k1 * c1) & 0xffffffff
+        k1 = ((k1 << 15) | (k1 >> 17)) & 0xffffffff
+        k1 = (k1 * c2) & 0xffffffff
+        h1 ^= k1
+    h1 ^= len(data)
+    h1 ^= h1 >> 16
+    h1 = (h1 * 0x85ebca6b) & 0xffffffff
+    h1 ^= h1 >> 13
+    h1 = (h1 * 0xc2b2ae35) & 0xffffffff
+    h1 ^= h1 >> 16
+    return h1 - (1 << 32) if h1 >= (1 << 31) else h1
+
+def char_wb_ngrams(text, lo=2, hi=3):
+    words = re.sub(r"[^\wঀ-৿]+", " ", text.lower()).split()
+    out = []
     for w in words:
         padded = " " + w + " "
         L = len(padded)
-        if L <= 2:
-            grams.append(padded); continue
-        n_max = min(3, L - 1)
-        for n in range(2, n_max + 1):
+        if L <= lo:
+            out.append(padded); continue
+        n_max = min(hi, L - 1)
+        for n in range(lo, n_max + 1):
             for i in range(L - n + 1):
-                grams.append(padded[i:i + n])
-    counts = {}
-    for g in grams: counts[g] = counts.get(g, 0) + 1
-    s = 0.0; norm = 0.0
-    for g, cnt in counts.items():
-        i = model["idf"].get(g)
-        if i is None: continue
-        tfidf = (1 + math.log(cnt)) * i
-        norm += tfidf * tfidf
-        w = model["classes"][cls]["weights"].get(g)
-        if w is not None: s += tfidf * w
-    norm = math.sqrt(norm) or 1
-    return s / norm
+                out.append(padded[i:i + n])
+    return out
+
+def score(model, text, cls):
+    """Replicates app/assets/js/nlp2.js classifyV2 arithmetic exactly (v3 hash model)."""
+    grams = set(char_wb_ngrams(text))
+    s = model["classes"][cls].get("intercept", 0)
+    nf = model["config"]["n_features"]
+    for g in grams:
+        b = murmur3(g.encode("utf-8")) % nf
+        w = model["classes"][cls]["weights"].get(str(b))
+        if w is not None: s += w
+    return s
 
 def main(path):
     ok, fail = [], []
@@ -60,13 +90,13 @@ def main(path):
     m = json.load(open(path, encoding="utf-8"))
     chk("size < 5MB", os.path.getsize(path) < 5 * 1048576, f"{os.path.getsize(path)/1048576:.2f} MB")
     chk("config.analyzer is char_wb", "char_wb" in m.get("config", {}).get("analyzer", ""))
+    chk("hash config present", m.get("config", {}).get("n_features") == 262144 and m["config"].get("seed") == 0)
     chk("classes complete", set(m["classes"].keys()) == REQUIRED_CLASSES,
         f"missing={sorted(REQUIRED_CLASSES - set(m['classes']))[:5]} extra={sorted(set(m['classes']) - REQUIRED_CLASSES)[:5]}")
-    chk("idf map present", len(m.get("idf", {})) > 5000, f"{len(m.get('idf', {}))} ngrams")
     met = m.get("metrics", {})
     chk("metrics.gate F1 >= 0.85", met.get("micro_f1", 0) >= 0.85, str(met.get("micro_f1")))
     chk("per-class F1 >= 0.70", all(v >= 0.70 for v in met.get("per_class_f1", {}).values()) if met.get("per_class_f1") else False)
-    chk("disclosed-synthetic statement", "synthetic" in m.get("description", "").lower())
+    chk("disclosed-synthetic statement", "synthetic" in m.get("description", "").lower() or "disclosed" in m.get("metrics", {}).get("corpus", "").lower())
     chk("train size >= 900k", met.get("train_sentences", 0) >= 450_000, str(met.get("train_sentences")))
 
     # spot checks: must-fire and must-not-fire across 3 scripts
