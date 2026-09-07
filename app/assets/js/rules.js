@@ -1,74 +1,71 @@
 // AdalatAI — PRIMARY detection: deterministic crime phrase matching.
-// Each rule maps to specific case types. When matched, ONLY these types shown.
-// More accurate than ML for known phrases — 100% explainable, 0% false positive.
+// Each rule has Bangla + Banglish (romanized) + English patterns.
+// When matched, ONLY these types shown. 100% explainable, 0% false positive.
 
 export const CRIME_RULES = [
-  { rx: /নারী[\s\u0980-\u09FF]*নির্যাতন|নারীর\s*ওপর\s*নির্যাতন|নারীকে\s*মারধর|নারী নির্যাতন/i,
+  { rx: /নারী[\s\u0980-\u09FF]*নির্যাতন|নারীর\s*ওপর\s*নির্যাতন|নারীকে\s*মারধর|নারী নির্যাতন|nari\s*nirjaton|nari nirjaton case|violence.*women|woman.*violence/i,
     types: ["assault_women", "eve_teasing", "hurt"],
     label: "নারী নির্যাতন / Violence against women" },
-  { rx: /violence against (a |the )?woman|woman.*assaulted|assaulted.*woman/i,
-    types: ["assault_women"], label: "Violence against woman" },
-  { rx: /ইভ[\s-]*টিজিং|ইভটিজিং|evtijging|ev-tijging|evtijging|eve[\s-]*teas|অশ্লীল ইশারা|অশ্লীল কথা|school.*ছাত্রী.*বিরক্ত/i,
+  { rx: /ইভ[\s-]*টিজিং|ইভটিজিং|evtijging|ev-tijging|eve[\s-]*teas|অশ্লীল ইশারা|অশ্লীল কথা|school.*ছাত্রী.*বিরক্ত/i,
     types: ["eve_teasing"], label: "ইভ-টিজিং / Eve teasing" },
   { rx: /ধর্ষণ|dhorshon|dhorshon koreche|rape/i, types: ["rape"], label: "ধর্ষণ / Rape" },
-  { rx: /এসিড নিক্ষেপ|এসিডে পুড়ি|acid nikhep|acid (throw|attack)ি|acid nikhep|acid (throw|attack|burn)/i,
+  { rx: /এসিড নিক্ষেপ|এসিডে পুড়ি|acid nikhep|acid (throw|attack|burn)/i,
     types: ["acid_violence"], label: "এসিড সহিংসতা / Acid violence" },
-  { rx: /যৌতুক|joutuk|joutuker jonno|dowry/i, types: ["dowry"], label: "যৌতুক নির্যাতন / Dowry" },
-  { rx: /খুন|খুন করেছে|হত্যা|গুলি করে মারা|khun|khun koreche|hotya|মৃতদেহ|khun|khun koreche|hotya|murder|stabbed to death|shot dead/i,
+  { rx: /যৌতুক|joutuk|dowry/i, types: ["dowry"], label: "যৌতুক নির্যাতন / Dowry" },
+  { rx: /খুন|হত্যা|গুলি করে মারা|মৃতদেহ|khun|khun koreche|murder|stabbed to death|shot dead/i,
     types: ["murder"], label: "খুন / Murder" },
   { rx: /অনিচ্ছাকৃত হত্যা|মারপিটে মৃত্যু|culpable homicide/i,
     types: ["culpable_homicide"], label: "অনিচ্ছাকৃত হত্যা / Culpable homicide" },
-  { rx: /চুরি|চুরি হয়েছে|পকেট কেটে|churi|churi hoyeche|churi koreche|দোকান ভেঙে|churi|churi hoyeche|churi koreche|theft|stole|stolen|broken into/i,
+  { rx: /চুরি|চুরি হয়েছে|পকেট কেটে|দোকান ভেঙে|churi|churi hoyeche|churi koreche|theft|stole|stolen|broken into/i,
     types: ["theft"], label: "চুরি / Theft" },
-  { rx: /ছিনতাই|অস্ত্র দেখিয়ে|chintai|chintai koreche|chintai|chintai koreche|snatch|robb/i, types: ["robbery"], label: "ডাকাতি / Robbery" },
-  { rx: /গ্যাং|দলবদ্ধ.*লুট|পাঁচ.*জনের|dacoity|armed gang/i, types: ["dacoity"], label: "দলবদ্ধ ডাকাতি / Dacoity" },
-  { rx: /মারধর|মারপিট|জখম|লাঠি দিয়ে|mar-dhor|mar-dhor koreche|marpit|মারধর করেছে|mar-dhor|mar-dhor koreche|marpit|beaten|injur|hurt/i,
+  { rx: /ছিনতাই|অস্ত্র দেখিয়ে|chintai|chintai koreche|snatch|robb/i,
+    types: ["robbery"], label: "ডাকাতি/ছিনতাই / Robbery" },
+  { rx: /গ্যাং|দলবদ্ধ.*লুট|পাঁচ.*জনের|dacoity|armed gang/i,
+    types: ["dacoity"], label: "দলবদ্ধ ডাকাতি / Dacoity" },
+  { rx: /মারধর|মারপিট|জখম|লাঠি দিয়ে|mar-dhor|mar-dhor koreche|marpit|beaten|injur/i,
     types: ["hurt"], label: "আঘাত / Hurt" },
-  { rx: /আক্রমণ|থাপ্পড়|assault|criminal force/i, types: ["assault_women", "hurt"],
-    label: "আক্রমণ / Assault" },
-  { rx: /অপহরণ|নিয়ে গেছে|গাড়িতে তুলে|opohoron|opohoron koreche|মুক্তিপণ|opohoron|opohoron koreche|kidnap|abduct/i,
+  { rx: /আক্রমণ|থাপ্পড়|assault|criminal force/i,
+    types: ["assault_women", "hurt"], label: "আক্রমণ / Assault" },
+  { rx: /অপহরণ|নিয়ে গেছে|গাড়িতে তুলে|মুক্তিপণ|opohoron|opohoron koreche|kidnap|abduct/i,
     types: ["kidnapping"], label: "অপহরণ / Kidnapping" },
-  { rx: /তালাবদ্ধ|কক্ষে বন্দি|বন্দি রেখেছে|locked.*inside|confined/i,
+  { rx: /তালাবদ্ধ|কক্ষে বন্দি|বন্দি রেখেছে|locked.*inside|wrongful confinement|confined/i,
     types: ["wrongful_confinement"], label: "অবৈধ আটক / Confinement" },
-  { rx: /প্রতারণা|ভুয়া চাকরি|ভুয়া প্রতিশ্রুতি|protarona|protarona koreche|টাকা নিয়ে পালিয়ে|protarona|protarona koreche|cheat|fraud|false promise/i,
+  { rx: /প্রতারণা|ভুয়া চাকরি|ভুয়া প্রতিশ্রুতি|টাকা নিয়ে পালিয়ে|protarona|protarona koreche|cheat|fraud|false promise/i,
     types: ["cheating"], label: "প্রতারণা / Cheating" },
-  { rx: /আত্মসাৎ|জমা রাখা টাকা|atomshot|atomshot koreche|এজেন্ট.*টাকা|atomshot|breach of trust|misappropriat/i,
+  { rx: /আত্মসাৎ|জমা রাখা টাকা|এজেন্ট.*টাকা|atomshot|breach of trust|misappropriat/i,
     types: ["breach_of_trust"], label: "আস্থাভাজন / Breach of trust" },
-  { rx: /কাচ ভাঙ|গাছ কাট|সাইনবোর্ড ভাঙ|আগুন দিয়ে|broke.*window|mischief|damaged/i,
+  { rx: /কাচ ভাঙ|গাছ কাট|সাইনবোর্ড ভাঙ|আগুন দিয়ে|mischief|damaged.*property/i,
     types: ["mischief"], label: "সম্পত্তি ক্ষতি / Mischief" },
   { rx: /অনধিকার প্রবেশ|জমির ভেতরে|শাটার ভেঙে|উঠানে ঢুকে|trespass|forcibly entered/i,
     types: ["trespass"], label: "অনধিকার প্রবেশ / Trespass" },
-  { rx: /মানহানি|মিথ্যা পোস্ট|সুনাম নষ্ট|manhani|manhani koreche|manhani|manhani koreche|defam|false statements/i,
+  { rx: /মানহানি|মিথ্যা পোস্ট|সুনাম নষ্ট|defam|false statements/i,
     types: ["defamation"], label: "মানহানি / Defamation" },
-  { rx: /হুমকি|মেরে ফেলার|ভয় দেখিয়ে|humki|humki diyeche|টাকা দাবি করে|threat|intimidat/i,
+  { rx: /হুমকি|মেরে ফেলার|ভয় দেখিয়ে|টাকা দাবি করে|threat|intimidat/i,
     types: ["criminal_intimidation"], label: "ভয় প্রদর্শন / Intimidation" },
   { rx: /অফিসে.*নারী কর্মী|অশ্লীল প্রস্তাব|পদের অপব্যবহার|workplace harass/i,
     types: ["sexual_harassment_workplace"], label: "কর্মক্ষেত্রে হয়রানি / Workplace harassment" },
-  { rx: /চেক.*ডিশনার|চেক.*এনক্যাশ|বকেয়ার চেক|cheque.*dishon|cheque.*bounc/i,
+  { rx: /চেক.*ডিশনার|চেক.*এনক্যাশ|বকেয়ার চেক|chek dishonour|cheque.*dishon|cheque.*bounc/i,
     types: ["cheque_bounce"], label: "চেক ডিশনার / Cheque bounce" },
-  { rx: /ফেসবুকে ভুয়া|ভুয়া আইডি|ভুয়া বিকাশ|fake.*id|fake.*facebook|fake.*ID|online fraud|cyber fraud|অনলাইন প্রতারণা/i,
+  { rx: /ফেসবুকে ভুয়া|ভুয়া বিকাশ|অনলাইন শপিং|bhua ID|fake.*id|fake.*facebook|online shopping.*fraud/i,
     types: ["cyber_fraud"], label: "সাইবার প্রতারণা / Cyber fraud" },
-  { rx: /ইউটিউবে.*মানহানি|ডিজিটাল মাধ্যমে মিথ্যা|অনলাইনে মিথ্যা|online manhani|online defam/i,
+  { rx: /অনলাইনে মিথ্যা|ডিজিটাল মাধ্যমে মিথ্যা|অনলাইন মানহানি|online defam|youtube.*manhanikor/i,
     types: ["cyber_defamation"], label: "অনলাইন মানহানি / Online defamation" },
   { rx: /হ্যাক|হ্যাক করেছে|অ্যাকাউন্ট.*নিয়ন্ত্রণ|অনুমতি ছাড়া.*তথ্য|hack|hack koreche|unauthorised access/i,
     types: ["cyber_hacking"], label: "হ্যাকিং / Hacking" },
-  { rx: /ইয়াবা|মাদক|গাঁজা|হিরোইন|মাদক বিক্রি|মাদক কেনাবেচা|madok|modhok|madok buy sell|madok bikri|yaba|ganja|heroin|narcotic|drug|weed|phensedyl|মাদক বিক্রি/i,
+  { rx: /ইয়াবা|মাদক|মাদক বিক্রি|মাদক কেনাবেচা|গাঁজা|হিরোইন|madok|madok buy sell|madok bikri|yaba|ganja|heroin|narcotic|drug/i,
     types: ["narcotics"], label: "মাদক অপরাধ / Narcotics" },
-  { rx: /ঘুষ|ঘুষ দাবি|দুর্নীতি|টেন্ডারবাজি|ghush|ghush dabi|সরকারি অর্থ|ghush|ghush dabi koreche|brib|corrupt|public funds/i,
+  { rx: /ঘুষ|ঘুষ দাবি|দুর্নীতি|টেন্ডারবাজি|সরকারি অর্থ|ghush|ghush dabi|brib|corrupt|public funds/i,
     types: ["corruption_bribery"], label: "ঘুষ/দুর্নীতি / Bribery/Corruption" },
-  { rx: /বেপরোয়া গাড়ি|বেপরোয়া|নির্মাণসামগ্রী|beproya|rash driving ফেলে|রাস্তায় নিহত|rash driving|death by negligence/i,
+  { rx: /বেপরোয়া গাড়ি|বেপরোয়া|নির্মাণসামগ্রী ফেলে|রাস্তায় নিহত|beproya gari|rash driving|death by negligence/i,
     types: ["negligence_death"], label: "দুর্ঘটনায় মৃত্যু / Death by negligence" },
   { rx: /ঋণ পরিশোধ|ঋণ পরিশোধ করছে|ব্যাংকের ঋণ|এনজিওর ঋণ|rin porishodh|loan default/i,
     types: ["money_loan_default"], label: "অর্থঋণ / Loan default" },
-  { rx: /ভরণপোষণ দিচ্ছে না|স্ত্রী-সন্তানের খরচ|bhoronposhon|বাবা.*মেয়ের খরচ|maintenance/i,
+  { rx: /ভরণপোষণ দিচ্ছে না|স্ত্রী-সন্তানের খরচ|বাবা.*মেয়ের খরচ|bhoronposhon|maintenance/i,
     types: ["family_maintenance"], label: "ভরণপোষণ / Maintenance" },
-  { rx: /সীমানা বিরোধ|খালের পানি|simana birodh|প্রতিবেশীর সঙ্গে বিরোধ|boundary dispute/i,
+  { rx: /সীমানা বিরোধ|খালের পানি|প্রতিবেশীর সঙ্গে বিরোধ|simana birodh|boundary dispute/i,
     types: ["village_dispute"], label: "গ্রাম আদালত বিরোধ / Village dispute" },
 ];
 
-/**
- * Match crime phrases in text. Returns matched type names or null.
- */
 export function matchCrimeRules(text) {
   const types = [];
   for (const rule of CRIME_RULES) {
@@ -81,25 +78,23 @@ export function matchCrimeRules(text) {
   return types.length > 0 ? types : null;
 }
 
-/**
- * Get labels for types.
- */
+const BN_LABELS = {
+  theft: "চুরি", robbery: "ডাকাতি/ছিনতাই", dacoity: "দলবদ্ধ ডাকাতি",
+  murder: "খুন", culpable_homicide: "অনিচ্ছাকৃত হত্যা", hurt: "আঘাত",
+  assault_women: "নারীর ওপর আক্রমণ", eve_teasing: "ইভ-টিজিং",
+  sexual_harassment_workplace: "যৌন হয়রানি", rape: "ধর্ষণ",
+  kidnapping: "অপহরণ", wrongful_confinement: "অবৈধ আটক",
+  cheating: "প্রতারণা", breach_of_trust: "আস্থাভাজন",
+  mischief: "সম্পত্তি ক্ষতি", trespass: "অনধিকার প্রবেশ",
+  defamation: "মানহানি", criminal_intimidation: "ভয় প্রদর্শন",
+  dowry: "যৌতুক নির্যাতন", cheque_bounce: "চেক ডিশনার",
+  cyber_fraud: "অনলাইন প্রতারণা", cyber_defamation: "অনলাইন মানহানি",
+  cyber_hacking: "হ্যাকিং", narcotics: "মাদক অপরাধ",
+  corruption_bribery: "ঘুষ/দুর্নীতি", negligence_death: "দুর্ঘটনায় মৃত্যু",
+  money_loan_default: "অর্থঋণ", family_maintenance: "ভরণপোষণ",
+  village_dispute: "গ্রাম আদালত বিরোধ", acid_violence: "এসিড সহিংসতা",
+};
+
 export function getLabels(types, lang = "bn") {
-  const BN = {
-    theft: "চুরি", robbery: "ডাকাতি/ছিনতাই", dacoity: "দলবদ্ধ ডাকাতি",
-    murder: "খুন", culpable_homicide: "অনিচ্ছাকৃত হত্যা", hurt: "আঘাত",
-    assault_women: "নারীর ওপর আক্রমণ", eve_teasing: "ইভ-টিজিং",
-    sexual_harassment_workplace: "যৌন হয়রানি", rape: "ধর্ষণ",
-    kidnapping: "অপহরণ", wrongful_confinement: "অবৈধ আটক",
-    cheating: "প্রতারণা", breach_of_trust: "আস্থাভাজন",
-    mischief: "সম্পত্তি ক্ষতি", trespass: "অনধিকার প্রবেশ",
-    defamation: "মানহানি", criminal_intimidation: "ভয় প্রদর্শন",
-    dowry: "যৌতুক নির্যাতন", cheque_bounce: "চেক ডিশনার",
-    cyber_fraud: "অনলাইন প্রতারণা", cyber_defamation: "অনলাইন মানহানি",
-    cyber_hacking: "হ্যাকিং", narcotics: "মাদক অপরাধ",
-    corruption_bribery: "ঘুষ/দুর্নীতি", negligence_death: "দুর্ঘটনায় মৃত্যু",
-    money_loan_default: "অর্থঋণ", family_maintenance: "ভরণপোষণ",
-    village_dispute: "গ্রাম আদালত বিরোধ", acid_violence: "এসিড সহিংসতা",
-  };
-  return types.map((t) => (lang === "bn" ? (BN[t] || t) : t));
+  return types.map((t) => (lang === "bn" ? (BN_LABELS[t] || t) : t));
 }
