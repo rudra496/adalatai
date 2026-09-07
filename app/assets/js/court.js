@@ -87,6 +87,93 @@ export function punishmentOf(text) {
   return out;
 }
 
+// Deterministic keyword→type expansion (auditable rules — no retraining needed for
+// common Bangla/English crime phrasings). Complements the trained classifier.
+const SYNONYMS = [
+  // --- violence against women / eve teasing / sexual offences ---
+  [/নারी[\sঀ-৿]*নির্যাতন|নারীর ওপর নির্যাতন|নারীকে মারধর|নারী নির্যাতন/i, ["assault_women", "eve_teasing", "hurt"]],
+  [/violence against (a |the )?woman| assaulted (a |the )?woman/i, ["assault_women"]],
+  [/ইভ[\s-]*টিজিং|ইভটিজিং|eve[\s-]*teas|অশ্লীল ইশারা|অশ্লীল কথা বলে|অশ্লীল মেসেজ/i, ["eve_teasing"]],
+  [/যৌন হয়রানি|অফিসে.*নারী কর্মী|workplace harass/i, ["sexual_harassment_workplace"]],
+  [/ধর্ষণ|ধর্ষণ করে|rape/i, ["rape"]],
+  [/এসিড নিক্ষেপ|এসিডে পুড়ি|acid (throw|attack|burn)/i, ["acid_violence"]],
+  [/যৌতুক|যৌতুকের জন্য|dowry/i, ["dowry"]],
+  // --- homicide ---
+  [/খুন|হত্যা|গুলি করে মারা|ছুরি মেরে মারা|murder|stabbed to death|shot dead/i, ["murder"]],
+  [/অনিচ্ছাকৃত হত্যা|মারপিটে মৃত্যু|culpable homicide/i, ["culpable_homicide"]],
+  [/দুর্ঘটনায় মৃত্যু|বেপরোয়া গাড়ি|রাস্তায় নিহত|rash driving|accident.*death/i, ["negligence_death"]],
+  // --- physical harm ---
+  [/মারধর|মারপিট|জখম|লাঠি দিয়ে|ছুরি মেরে আহত|beaten|injur/i, ["hurt", "assault_women"]],
+  [/আক্রমণ|থাপ্পড়|assault|criminal force/i, ["assault_women", "hurt"]],
+  // --- property crimes ---
+  [/চুরি|চুরি হয়েছে|পকেট কেটে|theft|stole|stolen/i, ["theft"]],
+  [/ছিনতাই|ছুরি দেখিয়ে নিয়েছে|snatch|robb/i, ["robbery"]],
+  [/গ্যাং|দলবদ্ধ.*লুট|পাঁচ.*জনের|dacoity/i, ["dacoity"]],
+  [/ভেঙে ক্ষতি|গাছ কেটে|কাচ ভাঙ|আগুন দিয়ে|mischief|damaged.*property/i, ["mischief"]],
+  [/অনধিকার প্রবেশ|জমির ভেতরে|জোর করে ঢুকে|trespass|forcibly entered/i, ["trespass"]],
+  // --- fraud/trust ---
+  [/প্রতারণা|ভুয়া চাকরি|ভুয়া প্রতিশ্রুতি|cheat|fraud|false promise/i, ["cheating"]],
+  [/আত্মসাৎ|আস্থাভাজন|জমা রাখা টাকা|breach of trust|misappropriat/i, ["breach_of_trust"]],
+  // --- person crimes ---
+  [/অপহরণ|নিয়ে গেছে|গাড়িতে তুলে|kidnap|abduct/i, ["kidnapping"]],
+  [/তালাবদ্ধ|কক্ষে বন্দি|বন্দি রেখেছে|wrongful confinement|locked.*inside/i, ["wrongful_confinement"]],
+  [/মানহানি|মিথ্যা পোস্ট|সুনাম নষ্ট|defam|false statements/i, ["defamation"]],
+  [/হুমকি|ভয় দেখিয়ে|মেরে ফেলার হুমকি|threat|intimidat/i, ["criminal_intimidation"]],
+  // --- modern crimes ---
+  [/অনলাইন.*প্রতারণা|ফেসবুকে ভুয়া|ভুয়া বিকাশ|অনলাইন শপিং|fake (facebook )?id|online (shopping )?fraud/i, ["cyber_fraud"]],
+  [/অনলাইনে মিথ্যা|ডিজিটাল মাধ্যমে মিথ্যা|ইউটিউবে মানহানি|online defam|upload.*defam/i, ["cyber_defamation"]],
+  [/হ্যাক|অ্যাকাউন্ট হ্যাক|অনুমতি ছাড়া ঢুকে তথ্য|hack|unauthorised access/i, ["cyber_hacking"]],
+  // --- regulated goods ---
+  [/ইয়াবা|মাদক|গাঁজা|হিরোইন|yaba|ganja|heroin|narcotic|drug/i, ["narcotics"]],
+  [/ঘুষ|দুর্নীতি|টেন্ডারবাজি|brib|corrupt|public funds/i, ["corruption_bribery"]],
+  // --- financial/civil ---
+  [/চেক.*ডিশনার|চেক.*এনক্যাশ|cheque.*dishon|cheek.*dishon/i, ["cheque_bounce"]],
+  [/ঋণ পরিশোধ|ব্যাংকের ঋণ|এনজিওর ঋণ|loan default|ঋণ নিয়ে পালিয়ে/i, ["money_loan_default"]],
+  [/ভরণপোষণ দিচ্ছে না|স্ত্রী-সন্তানের খরচ|সন্তানের খরচ|maintenance/i, ["family_maintenance"]],
+  [/সীমানা বিরোধ|খালের পানি|প্রতিবেশীর সঙ্গে বিরোধ|boundary dispute|neighbour dispute/i, ["village_dispute"]],
+  // --- catch-alls ---
+  [/মামলা করতে|মামলা দায়ের|file a case|অভিযোগ লিখুন/i, []],  // intent — no type
+];
+
+/** Expand user text with deterministic keyword rules. */
+export function expandTypes(text, baseTypes) {
+  const found = new Set(baseTypes.map(([t]) => t));
+  for (const [rx, types] of SYNONYMS) {
+    if (rx.test(text)) types.forEach((t) => found.add(t));
+  }
+  return [...found].map((t) => {
+    const prev = baseTypes.find(([k]) => k === t);
+    return [t, prev ? prev[1] : 1.0];
+  });
+}
+
+/** Direct substring search over ALL 2,083 sections (Bangla acts included). */
+let ALL_INDEX = null;
+export async function searchAllSections(text, k = 6) {
+  if (!ALL_INDEX) {
+    ALL_INDEX = await (await fetch("data/all_sections.json")).json();
+  }
+  const words = String(text || "").toLowerCase()
+    .split(/[^\wঀ-৿]+/).filter((w) => w.length >= 4);
+  if (!words.length) return [];
+  const scored = [];
+  for (const s of ALL_INDEX.sections) {
+    const title = s.title.toLowerCase();
+    const body = s.text.toLowerCase();
+    let sc = 0;
+    for (const w of words) {
+      if (title.includes(w)) sc += 3;
+      if (body.includes(w)) sc += 1;
+    }
+    if (sc > 0) scored.push({ s, sc });
+  }
+  scored.sort((a, b) => b.sc - a.sc);
+  return scored.slice(0, k).map((x) => ({
+    number: x.s.number, title: x.s.title, text: x.s.text, url: x.s.url, act: x.s.act,
+    punishment: punishmentOf(x.s.text),
+  }));
+}
+
 /** Full AI pre-analysis. v2 (TF-IDF trained, 30 types, trilingual) first; v1 fallback. */
 export async function analyzeCase(text) {
   let v2 = null;
@@ -102,8 +189,17 @@ export async function analyzeCase(text) {
       const cs = await (await fetch("data/case_sections.json")).json();
       secMap = cs.mapping || {};
     } catch {}
-    const preds = nlp2.classifyV2(v2, text);
-    const types = preds.map((p) => [p.type, p.score]);
+    let preds = nlp2.classifyV2(v2, text);
+    let types = preds.map((p) => [p.type, p.score]);
+    // deterministic keyword expansion (auditable — see SYNONYMS table)
+    types = expandTypes(text, types);
+    if (!types.length) {
+      // nothing detected: fall back to direct full-corpus search only
+      const direct = await searchAllSections(text, 5);
+      return { types: [], sections: direct,
+               evidence: evidenceChecklist([]),
+               modelVersion: "direct-search (no classifier match)" };
+    }
     const outSecs = [];
     const seen = new Set();
     for (const [ct] of types) {
@@ -122,7 +218,16 @@ export async function analyzeCase(text) {
                        punishment: punishmentOf(byNum[n].text), act: "PC" });
       }
     }
-    return { types, sections: outSecs.slice(0, 7),
+    // direct search over ALL acts (Bangla acts included) — catches phrasings the
+    // classifier misses, e.g. "নারী নির্যাতন" -> Nari-o-Shishu Ain sections
+    const direct = await searchAllSections(text, 6);
+    for (const dsec of direct) {
+      if (!seen.has(dsec.act + dsec.number)) {
+        seen.add(dsec.act + dsec.number);
+        outSecs.push(dsec);
+      }
+    }
+    return { types, sections: outSecs.slice(0, 9),
              evidence: evidenceChecklist(types.map(([t]) => t)),
              modelVersion: "case_model-v2 (TF-IDF+NB, " + (v2.metrics?.total_corpus || "1.1M") + " sentences)" };
   }
