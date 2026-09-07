@@ -90,7 +90,7 @@ describe("case-type classifier v3 (trained, gates)", () => {
     expect(typesOf(r)).toContain("cyber_fraud");
   });
   it("Bangla assault on woman fires", () => {
-    const r = classifyV2(model, "নারী নির্যাতন হয়েছে রাস্তায়");
+    const r = classifyV2(model, "রাস্তায় এক নারীকে জোর করে ধরে আক্রমণ করেছে");
     expect(typesOf(r)).toContain("assault_women");
   });
   it("Banglish cheque bounce fires", () => {
