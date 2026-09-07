@@ -218,16 +218,17 @@ export async function analyzeCase(text) {
                        punishment: punishmentOf(byNum[n].text), act: "PC" });
       }
     }
-    // direct search over ALL acts (Bangla acts included) — catches phrasings the
-    // classifier misses, e.g. "নারী নির্যাতন" -> Nari-o-Shishu Ain sections
-    const direct = await searchAllSections(text, 6);
-    for (const dsec of direct) {
-      if (!seen.has(dsec.act + dsec.number)) {
-        seen.add(dsec.act + dsec.number);
-        outSecs.push(dsec);
+    // direct search over ALL acts — only add if fewer than 5 from type mapping
+    if (outSecs.length < 5) {
+      const direct = await searchAllSections(text, 4);
+      for (const dsec of direct) {
+        if (!seen.has(dsec.act + dsec.number)) {
+          seen.add(dsec.act + dsec.number);
+          outSecs.push(dsec);
+        }
       }
     }
-    return { types, sections: outSecs.slice(0, 9),
+    return { types, sections: outSecs.slice(0, 8),
              evidence: evidenceChecklist(types.map(([t]) => t)),
              modelVersion: "case_model-v2 (TF-IDF+NB, " + (v2.metrics?.total_corpus || "1.1M") + " sentences)" };
   }

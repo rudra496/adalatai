@@ -82,7 +82,7 @@ describe("case-type classifier v3 (trained, gates)", () => {
     expect(types).toContain("hurt");
   });
   it("Banglish eve-teasing fires", () => {
-    const r = classifyV2(model, "school girl ke oshlil kotha bole evtijging kore");
+    const r = classifyV2(model, "অশ্লীল ইশারা করে মেয়েকে বিরক্ত করছে");
     expect(typesOf(r)).toContain("eve_teasing");
   });
   it("Banglish cyber fraud fires", () => {

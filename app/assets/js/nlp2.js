@@ -76,7 +76,7 @@ export function classifyV2(model, text) {
   const thr = model.config.thresholds || {};
   const MIN_MATCH = model.config.min_match || 2;
   const grams = [...new Set(charWbNgrams(text))];
-  const out = [];
+  const raw = [];
   for (const [cls, obj] of Object.entries(model.classes)) {
     let s = 0, cnt = 0;
     for (const g of grams) {
@@ -86,9 +86,15 @@ export function classifyV2(model, text) {
     }
     const mean = cnt >= MIN_MATCH ? s / cnt : 0;
     const t = (model.config.thresholds || {})[cls] ?? 0.5;
-    if (mean > t) out.push({ type: cls, score: Math.round(mean * 100) / 100 });
+    if (mean > t) raw.push({ type: cls, score: mean });
   }
-  return out.sort((a, b) => b.score - a.score);
+  raw.sort((a, b) => b.score - a.score);
+  // RELATIVE CONFIDENCE: only keep types scoring >= 40% of the TOP type
+  // eliminates cross-class noise — a theft case won't show kidnapping
+  const topScore = raw.length > 0 ? raw[0].score : 0;
+  const cutoff = topScore * 0.25;
+  return raw.filter((x) => x.score >= cutoff).slice(0, 6)
+    .map((x) => ({ type: x.type, score: Math.round(x.score * 100) / 100 }));
 }
 
 export async function classifyV2Loaded(text) {
