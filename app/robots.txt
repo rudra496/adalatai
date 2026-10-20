@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rudra496.github.io/adalatai/sitemap.xml
